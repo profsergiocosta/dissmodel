@@ -50,8 +50,10 @@ st.set_page_config(page_title="Fire Model", layout="centered")
 st.title("Fire Model (DisSModel)")
 
 # Parâmetros do usuário
-steps = st.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
-grid_dim = st.slider("Tamanho da grade", min_value=5, max_value=50, value=20)
+st.sidebar.title("Parametros do Modelo")
+
+steps = st.sidebar.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
+grid_dim = st.sidebar.slider("Tamanho da grade", min_value=5, max_value=50, value=20)
 
 custom_cmap = ListedColormap(['green', 'red', 'brown'])
 plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
