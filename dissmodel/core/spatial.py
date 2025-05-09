@@ -51,5 +51,5 @@ class RegularGrid:
                 if idx in self.grid.index:
                     self.grid.loc[idx, attr] = pattern[w - i - 1][j]
 
-    def get_grid(self):
+    def to_geodaframe(self):
         return self.grid
