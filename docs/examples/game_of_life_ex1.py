@@ -11,7 +11,7 @@ custom_cmap = ListedColormap(['green', 'red'])
 plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
 
 
-grid = RegularGrid(bounds=(0, 0, 100, 100), dim=10, attrs={'land_use': 0})
+grid = RegularGrid(bounds=(0, 0, 100, 100), dim=10, attrs={'state': 0})
 glider_pattern = [
             [0, 1, 0],
             [0, 0, 1],
