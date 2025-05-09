@@ -2,11 +2,9 @@
 
 from dissmodel.visualization import Map, Chart
 
-import streamlit as st
-import inspect
 
 
-def display_inputs(obj):
+def display_inputs(obj, st):
     annotations = getattr(obj, '__annotations__', {})
 
     for name, type_ in annotations.items():

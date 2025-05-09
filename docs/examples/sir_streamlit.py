@@ -70,13 +70,20 @@ class SIR(Model):
 st.set_page_config(page_title="SIR Model", layout="centered")
 st.title("SIR Model (DisSModel)")
 
+
+st.sidebar.title("Parametros do Modelo")
+
+
 # Parâmetros do usuário
-steps = st.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
+steps = st.sidebar.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
+
+
+
 
 
 
 env = Environment(
-        end_time=10, start_time=0
+        end_time=steps, start_time=0
 )
 
 
@@ -89,10 +96,12 @@ sir = SIR(susceptible=9998, infected=2, recovered=0, duration=2, contacts=6,
 
 
 
-st.text("Parametros do Modelo")
 
-display_inputs(sir)
 
+
+
+
+display_inputs(sir, st.sidebar)
 
 
 # Inicializar estado da sessão
