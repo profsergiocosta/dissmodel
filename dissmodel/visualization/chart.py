@@ -81,6 +81,5 @@ class Chart (Model):
             plt.draw()
             if self.pause:
                 plt.pause(0.1)
-                print (self.env.end_time)
                 if self.env.now() == self.env.end_time:
                     plt.show() # não fecha a janela

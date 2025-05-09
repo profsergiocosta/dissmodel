@@ -1,10 +1,14 @@
 
 
 
-from dissmodel.core import Model
+
+from dissmodel.core import Environment, Model
+
+from dissmodel.visualization.chart import Chart, Plot
+
+
+
 from dissmodel.visualization.chart import Plot
-
-
 
 
 class SIR(Model):
@@ -26,7 +30,6 @@ class SIR(Model):
     @Plot("line", "Susceptible", "green")
     def set_susceptible(self, value):
         self.susceptible = value
-
 
     @Plot("line", "Infected", "red")
     def set_infected(self, value):
@@ -55,3 +58,15 @@ class SIR(Model):
 
     def execute(self):
         self.update()
+
+
+# Preparando o ambiente de simulação e o gráfico
+#print (10)
+env = Environment()
+
+SIR(susceptible=9998, infected=2, recovered=0, duration=2, contacts=6,
+          probability=0.25, final_time=30)
+
+Chart()
+
+env.run(30)  

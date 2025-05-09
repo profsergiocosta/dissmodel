@@ -1,1 +1,0 @@
-from dissmodel.models.toys.game_of_life import GameOfLife

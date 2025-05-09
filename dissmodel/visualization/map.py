@@ -37,21 +37,3 @@ class Map (Model):
         self.update(year, self.env.gdf) 
 
 
-
-
-class StreamlitMap(Map):
-    def setup(self, plot_params, plot_area=None):
-        # Chama o setup da classe mãe para criar fig e ax
-        super().setup(plot_params, pause=False)
-        
-        # Adiciona atributos específicos para Streamlit
-        self.plot_area = plot_area
-
-    def execute(self):
-        # Usa o método da superclasse para atualizar a figura
-        super().execute()
-        
-        # Depois disso, mostra a figura no Streamlit
-        if self.plot_area:
-            self.plot_area.pyplot(self.fig)
-        

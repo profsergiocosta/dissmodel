@@ -1,7 +1,12 @@
 
-from dissmodel.core import Model
+from dissmodel.core import Model, Environment, RegularGrid
+
+from dissmodel.visualization.map import Map
 
 
+from matplotlib.colors import ListedColormap
+
+### Modelo
 
 class GameOfLife(Model):
        
@@ -34,3 +39,39 @@ class GameOfLife(Model):
         # Aplicar a função `rule` a todos os índices e armazenar os novos estados
         self.env.gdf["state"] = self.env.gdf.index.map(self.rule)
         print (self.env.now())
+
+
+
+
+
+### espaço 
+grid = RegularGrid(bounds=(0, 0, 100, 100), dim=10, attrs={'state': 0})
+glider_pattern = [
+            [0, 1, 0],
+            [0, 0, 1],
+            [1, 1, 1]
+]
+
+grid.fill (attr='state', pattern=glider_pattern, start_x=3, start_y=3)
+
+
+### instanciação de um modelo
+### ambiente que integra o espaço e os modelos
+env = Environment (
+    gdf = grid.to_geodaframe(),
+    end_time = 10,
+    start_time=0
+)
+
+## instanciacao do modelo
+GameOfLife(create_neighbohood="Queen")
+
+## visualização
+custom_cmap = ListedColormap(['green', 'red'])
+plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
+Map( 
+    plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
+)
+
+## execução
+env.run()
