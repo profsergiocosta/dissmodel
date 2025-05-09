@@ -67,8 +67,8 @@ class SIR(Model):
 ## a configuracao começaria aqui
 
 # Configurações da aplicação
-st.set_page_config(page_title="Fire Model", layout="centered")
-st.title("Fire Model (LUCCMEpy)")
+st.set_page_config(page_title="SIR Model", layout="centered")
+st.title("SIR Model (DisSModel)")
 
 # Parâmetros do usuário
 steps = st.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
@@ -101,10 +101,9 @@ if st.button("Executar Simulação"):
     plot_area = st.empty()
     
 
-
     # visualizacao
     StreamlitChart(plot_area=plot_area)
-    
+   
   
     env.run()
 
