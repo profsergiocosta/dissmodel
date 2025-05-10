@@ -39,21 +39,6 @@ class StreamlitMap(Map):
             self.plot_area.pyplot(self.fig)
         
 
-class StreamlitInputMixin:
-    def display_inputs(self):
-        # Pega a assinatura do __init__ da classe
-        sig = inspect.signature(self.__init__)
-        # Pega apenas os nomes dos parâmetros definidos no __init__, ignorando 'self'
-        init_params = [p.name for p in sig.parameters.values() if p.name != 'self']
-
-        for param in init_params:
-            value = getattr(self, param, None)
-            if isinstance(value, int):
-                setattr(self, param, st.slider(param, min_value=0, max_value=10000, value=value))
-            elif isinstance(value, float):
-                setattr(self, param, st.slider(param, min_value=0.0, max_value=1.0, value=value, step=0.01))
-            else:
-                setattr(self, param, st.text_input(param, str(value)))
 
 ### isso ficaria no modul de visualizacao
 class StreamlitChart (Chart):
