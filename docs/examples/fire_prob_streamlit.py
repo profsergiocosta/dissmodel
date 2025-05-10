@@ -24,8 +24,6 @@ import random
 FOREST = 0
 BURNING = 1
 BURNED = 2
-
-
 class FireModelProb(Model):
 
     prob_regrowth: float

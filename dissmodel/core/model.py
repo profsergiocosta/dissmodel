@@ -8,7 +8,7 @@ class Model (sim.Component):
         "Rook" : weights.contiguity.Rook
     }
 
-    def __init__(self, hold = 1, name="", create_neighbohood = False, *args, **kwargs):
+    def __init__(self, hold = 1, name="", create_neighbohood = None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = name
         self.create_neighbohood = create_neighbohood

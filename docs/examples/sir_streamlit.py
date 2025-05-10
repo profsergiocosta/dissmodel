@@ -104,6 +104,8 @@ sir = SIR(susceptible=9998, infected=2, recovered=0, duration=2, contacts=6,
 display_inputs(sir, st.sidebar)
 
 
+
+
 # Inicializar estado da sessão
 if st.button("Executar Simulação"):
     # Área de plotagem reservada

@@ -6,6 +6,7 @@ from rasterstats import zonal_stats
 
 import random
 
+## issue: gera linhas com geometria nula, por exemplo, na dimensao 10
 def regular_grid(gdf=None, bounds=None, dim=10, attrs={}, crs="EPSG:29902"):
     """
     Create a square grid that covers a GeoDataFrame area
