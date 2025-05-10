@@ -1,5 +1,9 @@
 
-from dissmodel.core import Model, Environment, RegularGrid
+from dissmodel.core import Model, Environment
+
+
+from dissmodel.core.spatial import regular_grid, fill
+
 
 from dissmodel.visualization import Map
 
@@ -68,8 +72,7 @@ if st.button("Executar Simulação"):
     # Área de plotagem reservada
     plot_area = st.empty()
 
-    grid = RegularGrid(bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
-    gdf = grid.to_geodaframe()
+    gdf = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
     gdf.loc["10-10","state"] = BURNING
 
     env = Environment (

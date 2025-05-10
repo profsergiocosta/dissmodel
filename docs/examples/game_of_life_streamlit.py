@@ -1,5 +1,9 @@
 
-from dissmodel.core import Model, Environment, RegularGrid
+from dissmodel.core import Model, Environment
+
+
+from dissmodel.core.spatial import regular_grid, fill
+
 
 from dissmodel.visualization.map import Map
 
@@ -68,17 +72,58 @@ if st.button("Executar Simulação"):
     # Área de plotagem reservada
     plot_area = st.empty()
 
-    grid = RegularGrid(bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'land_use': 0})
+    grid = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'land_use': 0})
     glider_pattern = [
                 [0, 1, 0],
                 [0, 0, 1],
                 [1, 1, 1]
     ]
 
-    grid.fill (attr='state', pattern=glider_pattern, start_x=10, start_y=10)
+    glider_pattern = [
+                [0, 1, 0],
+                [0, 0, 1],
+                [1, 1, 1]
+    ]
+
+    toad_pattern = [
+                [0, 1, 1,1],
+                [1, 1, 1,0]
+    ]
+
+
+    blinker_pattern = [
+                [1, 1, 1]
+    ]
+
+    fill(
+        strategy="pattern",
+        gdf=grid,
+        attr="state",
+        pattern=toad_pattern,
+        start_x=5,
+        start_y=5
+    )
+
+    fill(
+        strategy="pattern",
+        gdf=grid,
+        attr="state",
+        pattern=blinker_pattern,
+        start_x=10,
+        start_y=12
+    )
+
+    fill(
+        strategy="pattern",
+        gdf=grid,
+        attr="state",
+        pattern=glider_pattern,
+        start_x=15,
+        start_y=15
+    )
 
     env = Environment (
-        gdf = grid.to_geodaframe(),
+        gdf = grid,
         end_time = steps,
         start_time=0
     )

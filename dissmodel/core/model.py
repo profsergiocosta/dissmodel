@@ -8,7 +8,7 @@ class Model (sim.Component):
         "Rook" : weights.contiguity.Rook
     }
 
-    def __init__(self, hold = 1, name="", create_neighbohood = False, *args, **kwargs):
+    def __init__(self, hold = 1, name="", create_neighbohood = None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = name
         self.create_neighbohood = create_neighbohood
@@ -26,6 +26,9 @@ class Model (sim.Component):
             return self.env.gdf.loc[ns]
         else:
             return {}
+    
+    def update_neighbohood (self, strategy):
+        self.w_ = Model.strategies[strategy].from_dataframe(self.env.gdf, use_index=True)                            
         
     def process(self):
             while True: 
