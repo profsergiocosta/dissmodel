@@ -66,5 +66,5 @@ StreamlitChart(plot_area=st.empty())
 
 # Executa a simulação ao clicar no botão
 if executar:
-    env.reset() # apagar as informacoe no plot, pensar depois se essa é a melhor abordagem
+    #env.reset() # apagar as informacoe no plot, pensar depois se essa é a melhor abordagem
     env.run()

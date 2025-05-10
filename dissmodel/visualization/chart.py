@@ -40,8 +40,9 @@ class Chart(Model):
 
         # Garante que _plot_metadata exista
         plot_metadata = getattr(self.env, "_plot_metadata", {})
-
-        for label, info in plot_metadata.items():
+        
+        for label, info in plot_metadata.items():  
+            print (info["data"])          
             self.ax.plot(info["data"], label=label, color=info["color"])
 
         if self.env.now() == 0:
@@ -50,6 +51,7 @@ class Chart(Model):
         self.ax.relim()
         self.ax.autoscale_view()
         plt.draw()
+
 
         if self.pause:
             plt.pause(0.1)
