@@ -1,5 +1,7 @@
 
-from dissmodel.core import Model, Environment, RegularGrid
+from dissmodel.core import Model, Environment
+
+from dissmodel.core.spatial import regular_grid, fill
 
 from dissmodel.visualization.map import Map
 
@@ -70,13 +72,20 @@ if st.button("Executar Simulação"):
     plot_area = st.empty()
 
     ### espaço 
-    grid = RegularGrid(bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
-    gdf = grid.to_geodaframe()
+    gdf = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
+    
     n = len(gdf)
-    gdf["state"] = np.random.choice([0, 1], size=n, p=[0.7, 0.3])
+    
+    fill(
+        strategy="random_sample",
+        gdf=gdf,
+        attr="state",
+        data={0: 0.7, 1: 0.3},
+        seed=42
+    )
 
     env = Environment (
-        gdf = grid.to_geodaframe(),
+        gdf = gdf,
         end_time = steps,
         start_time=0
     )

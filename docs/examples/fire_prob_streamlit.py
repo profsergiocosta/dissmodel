@@ -1,9 +1,11 @@
 
-from dissmodel.core import Model, Environment, RegularGrid
+from dissmodel.core import Model, Environment
+
+from dissmodel.core.spatial import regular_grid, fill
 
 from dissmodel.visualization import Map
 
-from dissmodel.visualization.streamlit import StreamlitMap
+from dissmodel.visualization.streamlit import StreamlitMap, display_inputs
 
 
 from matplotlib.colors import ListedColormap
@@ -16,10 +18,25 @@ import random
 # Fire in the forest
 # https://github.com/cesaraustralia/DynamicGrids.jl
 
-prob_combustion=0.001
-prob_regrowth=0.1
+
+
+
+FOREST = 0
+BURNING = 1
+BURNED = 2
+
 
 class FireModelProb(Model):
+
+    prob_regrowth: float
+    prob_combustion: float
+
+    def __init__(self, prob_combustion=0.001,  prob_regrowth=0.1, *args, **kwargs):
+        
+        super().__init__(*args, **kwargs)
+
+        self.prob_combustion = prob_combustion
+        self.prob_regrowth = prob_regrowth
 
     def rule(self, idx):
         state = self.env.gdf.loc[idx].state
@@ -30,13 +47,13 @@ class FireModelProb(Model):
             if (neighs.state == BURNING).any():
                 return BURNING
             else:
-                return BURNING if random.random() <= prob_combustion else FOREST
+                return BURNING if random.random() <= self.prob_combustion else FOREST
 
         elif state == BURNING:
             return BURNED
            
         else:
-             return FOREST if random.random() <= prob_regrowth else BURNED
+             return FOREST if random.random() <= self.prob_regrowth else BURNED
         
 
     def execute (self):
@@ -49,6 +66,7 @@ class FireModelProb(Model):
 st.set_page_config(page_title="Fire Model", layout="centered")
 st.title("Fire Model (DisSModel)")
 
+
 # Parâmetros do usuário
 st.sidebar.title("Parametros do Modelo")
 
@@ -58,9 +76,6 @@ grid_dim = st.sidebar.slider("Tamanho da grade", min_value=5, max_value=50, valu
 custom_cmap = ListedColormap(['green', 'red', 'brown'])
 plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
 
-FOREST = 0
-BURNING = 1
-BURNED = 2
 
 # Inicializar estado da sessão
 if st.button("Executar Simulação"):
@@ -68,8 +83,7 @@ if st.button("Executar Simulação"):
     # Área de plotagem reservada
     plot_area = st.empty()
 
-    grid = RegularGrid(bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
-    gdf = grid.to_geodaframe()
+    gdf = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
     gdf.loc["10-10","state"] = BURNING
 
     env = Environment (
