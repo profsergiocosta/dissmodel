@@ -19,8 +19,7 @@ class Map (Model):
     def update(self, year, gdf):
         self.ax.clear()  # Limpa o gráfico antes de redesenhar
     
-
-        gdf.plot(ax=self.ax, **self.plot_params) 
+        self.env.gdf.plot(ax=self.ax, **self.plot_params) 
         self.ax.set_title(f'Map for {year}')  
 
         plt.draw()  # Desenha o gráfico na tela

@@ -23,6 +23,11 @@ class Environment(sim.Environment):
         else:
             super().run(till=self.end_time - self.start_time)
 
+    def reset(self):
+        if hasattr(self, "_plot_metadata"):
+            for item in self._plot_metadata.values():
+                item["data"].clear()
+                
     def now(self):
         """
         Retorna o tempo atual da simulação ajustado pelo tempo inicial.

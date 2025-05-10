@@ -93,4 +93,5 @@ StreamlitChart(plot_area=st.empty())
 
 # Executa a simulação ao clicar no botão
 if executar:
+    env.reset()
     env.run()
