@@ -71,11 +71,25 @@ st.title("Fire Model (DisSModel)")
 st.sidebar.title("Parametros do Modelo")
 
 steps = st.sidebar.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
-grid_dim = st.sidebar.slider("Tamanho da grade", min_value=5, max_value=50, value=20)
+grid_dim = st.sidebar.slider("Tamanho da grade", min_value=5, max_value=100, value=20)
 
 custom_cmap = ListedColormap(['green', 'red', 'brown'])
 plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
 
+
+gdf = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
+
+
+env = Environment (
+        gdf = gdf,
+        end_time = steps,
+        start_time=0
+    )
+
+# simulação  
+fire = FireModelProb(create_neighbohood="Rook")
+
+display_inputs(fire, st.sidebar)
 
 # Inicializar estado da sessão
 if st.button("Executar Simulação"):
@@ -83,17 +97,6 @@ if st.button("Executar Simulação"):
     # Área de plotagem reservada
     plot_area = st.empty()
 
-    gdf = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
-    gdf.loc["10-10","state"] = BURNING
-
-    env = Environment (
-        gdf = gdf,
-        end_time = steps,
-        start_time=0
-    )
-
-    # simulação  
-    FireModelProb(create_neighbohood="Rook")
 
     # visualizacao
     StreamlitMap(  

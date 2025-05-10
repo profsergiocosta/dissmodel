@@ -26,6 +26,9 @@ class Model (sim.Component):
             return self.env.gdf.loc[ns]
         else:
             return {}
+    
+    def update_neighbohood (self, strategy):
+        self.w_ = Model.strategies[strategy].from_dataframe(self.env.gdf, use_index=True)                            
         
     def process(self):
             while True: 
