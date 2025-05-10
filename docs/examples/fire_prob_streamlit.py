@@ -60,48 +60,63 @@ class FireModelProb(Model):
         self.env.gdf["state"] = self.env.gdf.index.map(self.rule)
 
 
-## a configuracao começaria aqui
 
-# Configurações da aplicação
+############################
+### Interface do usuário com Streamlit
+
+# Configuração inicial da página
 st.set_page_config(page_title="Fire Model", layout="centered")
 st.title("Fire Model (DisSModel)")
 
-
-# Parâmetros do usuário
-st.sidebar.title("Parametros do Modelo")
-
+# Painel lateral com parâmetros ajustáveis pelo usuário
+st.sidebar.title("Parâmetros do Modelo")
 steps = st.sidebar.slider("Número de passos da simulação", min_value=1, max_value=50, value=10)
 grid_dim = st.sidebar.slider("Tamanho da grade", min_value=5, max_value=100, value=20)
 
-custom_cmap = ListedColormap(['green', 'red', 'brown'])
-plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
+# Botão principal para iniciar a simulação
+executar = st.button("Executar Simulação")
 
+############################
+### Criação do espaço simulado
 
-gdf = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
+# Geração de uma grade regular como espaço simulado, sem dados espaciais externos
+gdf = regular_grid(bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'state': 0})
 
+# Criação do ambiente de simulação, que integra espaço, tempo e agentes
+env = Environment(
+    gdf=gdf,
+    end_time=steps,
+    start_time=0
+)
 
-env = Environment (
-        gdf = gdf,
-        end_time = steps,
-        start_time=0
-    )
+############################
+### Instanciação do modelo e exibição de parâmetros
 
-# simulação  
+# Criação do modelo de fogo com definição da vizinhança (Rook)
 fire = FireModelProb(create_neighbohood="Rook")
 
+# Exibição dos parâmetros do modelo na barra lateral
 display_inputs(fire, st.sidebar)
 
-# Inicializar estado da sessão
-if st.button("Executar Simulação"):
+############################
+### Visualização da simulação
 
-    # Área de plotagem reservada
-    plot_area = st.empty()
+# Área da interface reservada para o mapa interativo
+plot_area = st.empty()
 
+# Mapeamento de cores personalizado para os estados das células
+custom_cmap = ListedColormap(['green', 'red', 'brown'])
+plot_params = {"column": "state", "cmap": custom_cmap, "ec": "black"}
 
-    # visualizacao
-    StreamlitMap(  
-        plot_area = plot_area,
-        plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
-    )
+# Componente de visualização do mapa
+StreamlitMap(
+    plot_area=plot_area,
+    plot_params=plot_params
+)
 
+############################
+### Execução da simulação
+
+# Inicia a simulação quando o botão for clicado
+if executar:
     env.run()
