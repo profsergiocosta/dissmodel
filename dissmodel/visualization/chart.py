@@ -41,8 +41,7 @@ class Chart(Model):
         # Garante que _plot_metadata exista
         plot_metadata = getattr(self.env, "_plot_metadata", {})
         
-        for label, info in plot_metadata.items():  
-            print (info["data"])          
+        for label, info in plot_metadata.items():     
             self.ax.plot(info["data"], label=label, color=info["color"])
 
         if self.env.now() == 0:
