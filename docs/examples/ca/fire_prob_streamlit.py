@@ -14,49 +14,7 @@ import streamlit as st
 
 import random
 
-
-# Fire in the forest
-# https://github.com/cesaraustralia/DynamicGrids.jl
-
-
-
-
-FOREST = 0
-BURNING = 1
-BURNED = 2
-class FireModelProb(Model):
-
-    prob_regrowth: float
-    prob_combustion: float
-
-    def __init__(self, prob_combustion=0.001,  prob_regrowth=0.1, *args, **kwargs):
-        
-        super().__init__(*args, **kwargs)
-
-        self.prob_combustion = prob_combustion
-        self.prob_regrowth = prob_regrowth
-
-    def rule(self, idx):
-        state = self.env.gdf.loc[idx].state
-        
-        if state == FOREST:
-            neighs = self.neighs(idx)
-
-            if (neighs.state == BURNING).any():
-                return BURNING
-            else:
-                return BURNING if random.random() <= self.prob_combustion else FOREST
-
-        elif state == BURNING:
-            return BURNED
-           
-        else:
-             return FOREST if random.random() <= self.prob_regrowth else BURNED
-        
-
-    def execute (self):
-        self.env.gdf["state"] = self.env.gdf.index.map(self.rule)
-
+from dissmodel.models.ca import FireModelProb
 
 
 ############################

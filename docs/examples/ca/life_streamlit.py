@@ -17,7 +17,7 @@ import streamlit as st
 import random
 
 from dissmodel.models.ca import GameOfLife
-from dissmodel.models.ca.life import patterns
+
 
 
 
@@ -41,7 +41,7 @@ plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
 grid = regular_grid (bounds=(0, 0, 100, 100), dim=grid_dim, attrs={'land_use': 0})
 
 print (grid_dim)
-for name, pattern in patterns.items():
+for name, pattern in GameOfLife.patterns.items():
     start_x = random.randint(0, 15)
     start_y = random.randint(0, 15)
     

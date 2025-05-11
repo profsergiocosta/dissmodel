@@ -5,29 +5,20 @@ from dissmodel.visualization.map import Map
 
 from dissmodel.core.spatial import regular_grid, fill
 
+
 from matplotlib.colors import ListedColormap
 
-### Modelo
-
-
-
-
-
+from dissmodel.models.ca import GameOfLife
 
 ### espaço 
 gdf = regular_grid (bounds=(0, 0, 100, 100), dim=20, attrs={'state': 0})
-#grid = regular_grid (bounds=(0, 0, 100, 100), dim=10, attrs={'land_use': 0})
-glider_pattern = [
-            [0, 1, 0],
-            [0, 0, 1],
-            [1, 1, 1]
-]
+
 
 fill(
         strategy="pattern",
         gdf=gdf,
         attr="state",
-        pattern=glider_pattern,
+        pattern=GameOfLife.patterns["glider"],
         start_x=5,
         start_y=5
 )

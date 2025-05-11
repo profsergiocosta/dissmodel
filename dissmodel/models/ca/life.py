@@ -4,6 +4,21 @@ from dissmodel.core import Model
 
 
 class GameOfLife(Model):
+
+    patterns = {
+        "glider": [
+            [0, 1, 0],
+            [0, 0, 1],
+            [1, 1, 1]
+        ],
+        "toad": [
+            [0, 1, 1, 1],
+            [1, 1, 1, 0]
+        ],
+        "blinker": [
+            [1, 1, 1]
+        ]
+    }
        
 
     def rule(self, idx):
@@ -35,17 +50,3 @@ class GameOfLife(Model):
         self.env.gdf["state"] = self.env.gdf.index.map(self.rule)
         print (self.env.now())
 
-patterns = {
-    "glider": [
-        [0, 1, 0],
-        [0, 0, 1],
-        [1, 1, 1]
-    ],
-    "toad": [
-        [0, 1, 1, 1],
-        [1, 1, 1, 0]
-    ],
-    "blinker": [
-        [1, 1, 1]
-    ]
-}
