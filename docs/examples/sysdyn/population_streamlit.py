@@ -31,7 +31,7 @@ env = Environment(end_time=steps, start_time=0)
 # Instanciação do modelo e configuração dos inputs
 ############################
 
-pop = PopulationGrowth(population=60, growth=0.5, growthChange=1)
+pop = PopulationGrowth()
 
 # Exibe os campos para entrada de dados do modelo
 display_inputs(pop, st.sidebar)
