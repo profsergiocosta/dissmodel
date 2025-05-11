@@ -1,0 +1,1 @@
+from dissmodel.models.ca.life import GameOfLife
