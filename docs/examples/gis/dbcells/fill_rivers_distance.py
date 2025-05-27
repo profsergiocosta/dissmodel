@@ -44,7 +44,7 @@ grid_5880.plot(
     edgecolor=None,      # Cor das bordas
     ax=ax
 )
-
+rivers.plot(ax=ax, color='red', markersize=10, label='Pontos')  # Pontos
 
 # Título e legenda
 plt.title("Polígonos coloridos pela menor distância aos pontos")
