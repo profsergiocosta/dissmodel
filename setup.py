@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="dissmodel",
-    version="0.1.0",
+    version="0.1.1",
     author="Sérgio Costa, Nerval Santos Junior",
     description="dissmodel - Discrete Spatial Modeling",
     long_description=open("README.md", encoding="utf-8").read(),
