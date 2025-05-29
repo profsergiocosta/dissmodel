@@ -5,14 +5,14 @@ setup(
     version="0.1.0",
     author="Sérgio Costa, Nerval Santos Junior",
     description="dissmodel - Discrete Spatial Modeling",
-    long_description=open("readme.md", encoding="utf-8").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/LambdaGeo/dissmodel",  
+    url="https://github.com/LambdaGeo/dissmodel",
     license="MIT",
     packages=find_packages(),
     install_requires=[
         "numpy>=1.25.0",
-        # Adicione outras dependências aqui
+        # Outras dependências aqui
     ],
     python_requires=">=3.8",
     classifiers=[
@@ -20,5 +20,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    include_package_data=True,  # Se tiver arquivos extras, como dados ou configs
+    include_package_data=True,  # Inclui dados extra do MANIFEST.in
 )
