@@ -4,15 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dissmodel"
-version = "0.1.2"
+version = "0.1.2b"
 description = "dissmodel - Discrete Spatial Modeling"
-readme = "README.md"
-readme-content-type = "text/markdown"
-license = {text = "MIT"}
+readme = { file = "README.md", content-type = "text/markdown" }
 authors = [
-    { name = "Sérgio Costa, Nerval Santos Junior" }
+    { name = "Sérgio Costa" },
+    { name = "Nerval Santos Junior" }
 ]
-requires-python = ">=3.8"
+license = { text = "MIT" }
 dependencies = [
     "numpy>=1.25.0",
     "datadotworld==2.0.0",
@@ -20,15 +19,13 @@ dependencies = [
     "geopandas==1.0.1",
     "pysal==25.1",
     "streamlit==1.45.1",
-    "salabim==25.0.9.post4"
+    "salabim==25.0.9.post4",
 ]
+requires-python = ">=3.8"
 
-classifiers = [
-    "Programming Language :: Python :: 3.8",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent"
-]
+[tool.setuptools]
+packages = ["dissmodel"]
+include-package-data = true
 
-[project.urls]
-"Homepage" = "https://github.com/LambdaGeo/dissmodel"
-"Bug Tracker" = "https://github.com/LambdaGeo/dissmodel/issues"
+[tool.setuptools.package-data]
+"dissmodel" = ["*.json", "*.csv", "*.shp", "*.geojson", "*.tif"]
