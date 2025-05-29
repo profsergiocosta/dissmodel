@@ -24,8 +24,10 @@ dependencies = [
 requires-python = ">=3.8"
 
 [tool.setuptools]
-where = ["."]
 include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
 
 [tool.setuptools.package-data]
 "dissmodel" = ["*.json", "*.csv", "*.shp", "*.geojson", "*.tif"]
