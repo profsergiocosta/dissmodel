@@ -24,7 +24,7 @@ dependencies = [
 requires-python = ">=3.8"
 
 [tool.setuptools]
-packages = ["dissmodel"]
+where = ["."]
 include-package-data = true
 
 [tool.setuptools.package-data]
