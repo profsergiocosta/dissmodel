@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dissmodel"
-version = "0.1.2b"
+version = "0.1.2"
 description = "dissmodel - Discrete Spatial Modeling"
 readme = "README.md"
 readme-content-type = "text/markdown"
