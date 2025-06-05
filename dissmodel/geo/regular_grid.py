@@ -6,57 +6,68 @@ from shapely.geometry import box
 import matplotlib.pyplot as plt
 import rasterio
 
-def regular_grid(gdf=None, bounds=None, resolution=1000, attrs={}, crs=None):
+def regular_grid(gdf=None, bounds=None, resolution=None, dimension=None, attrs={}, crs=None):
     """
-    Cria um grid regular com células de tamanho fixo (homogêneo) que cobre um GeoDataFrame ou bounds.
-    
-    Parameters:
-        gdf (GeoDataFrame): GeoDataFrame para extrair bounds.
-        bounds (tuple): (xmin, ymin, xmax, ymax) se não quiser usar gdf.
-        resolution (float): Tamanho das células (em unidades do CRS).
-        attrs (dict): Atributos adicionais a adicionar ao grid.
-        crs (str): CRS do grid.
-    
+    Cria um grid regular com células de tamanho fixo (homogêneo), baseado em:
+    - Um GeoDataFrame (para pegar os bounds)
+    - Um bounds manual
+    - Apenas a dimensão e resolução (sem localização geográfica)
+
+    Args:
+        gdf (GeoDataFrame, optional): Para extrair os bounds.
+        bounds (tuple, optional): (xmin, ymin, xmax, ymax).
+        resolution (float, optional): Tamanho das células.
+        dimension (tuple, optional): Número de colunas e linhas (n_cols, n_rows).
+        attrs (dict): Atributos extras.
+        crs (str): CRS (opcional; se None, será um grid abstrato).
+
     Returns:
-        GeoDataFrame: Grid com células regulares (mesmo tamanho).
+        GeoDataFrame: Grade regular como GeoDataFrame.
     """
-    # Obter bounds
-    if bounds is not None:
+    import numpy as np
+    import geopandas as gpd
+    from shapely.geometry import box
+
+    if dimension is not None and resolution is not None:
+        n_cols, n_rows = dimension
+        xmin, ymin = 0, 0
+        resolution_x = resolution_y = resolution
+        xmax = xmin + n_cols * resolution_x
+        ymax = ymin + n_rows * resolution_y
+    elif bounds is not None:
         xmin, ymin, xmax, ymax = bounds
+        width = xmax - xmin
+        height = ymax - ymin
+        if resolution is not None:
+            resolution_x = resolution_y = resolution
+            n_cols = int(np.ceil(width / resolution_x))
+            n_rows = int(np.ceil(height / resolution_y))
+        elif dimension is not None:
+            n_cols, n_rows = dimension
+            resolution_x = width / n_cols
+            resolution_y = height / n_rows
+        else:
+            raise ValueError("Informe `resolution` ou `dimension`.")
     elif gdf is not None:
-        xmin, ymin, xmax, ymax = gdf.total_bounds
+        return regular_grid(bounds=gdf.total_bounds, resolution=resolution, dimension=dimension, attrs=attrs, crs=gdf.crs)
     else:
-        raise ValueError("Forneça um GeoDataFrame ou bounds explícito.")
-    
-    # Calcular largura e altura
-    width = xmax - xmin
-    height = ymax - ymin
-    
-    # Calcular o número necessário de células para cobrir a área
-    n_cols = int(np.ceil(width / resolution))
-    n_rows = int(np.ceil(height / resolution))
-    
-    # Ajustar xmax e ymax para que o grid tenha células completas
-    xmax_adj = xmin + n_cols * resolution
-    ymax_adj = ymin + n_rows * resolution
-    
-    # Gerar os limites das células
-    x_edges = np.arange(xmin, xmax_adj, resolution)
-    y_edges = np.arange(ymin, ymax_adj, resolution)
-    
+        raise ValueError("Informe `gdf`, `bounds` ou `dimension` com `resolution`.")
+
+    x_edges = np.arange(xmin, xmax, resolution_x)
+    y_edges = np.arange(ymin, ymax, resolution_y)
+
     grid_cells = []
     ids = []
     for i, x0 in enumerate(x_edges):
         for j, y0 in enumerate(y_edges):
-            x1, y1 = x0 + resolution, y0 + resolution
+            x1, y1 = x0 + resolution_x, y0 + resolution_y
             poly = box(x0, y0, x1, y1)
             grid_cells.append(poly)
             ids.append(f"{j}-{i}")
-    
+
     data = {"geometry": grid_cells, "id": ids}
     for key, value in attrs.items():
         data[key] = [value] * len(grid_cells)
-    
+
     grid_gdf = gpd.GeoDataFrame(data, crs=crs).set_index("id")
     return grid_gdf
-

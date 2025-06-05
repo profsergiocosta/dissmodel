@@ -6,11 +6,11 @@ class Environment(sim.Environment):
     e integração com dados geográficos (GeoDataFrame).
     """
 
-    def __init__(self, gdf=None, start_time=0, end_time=0, *args, **kwargs):
+    def __init__(self, start_time=0, end_time=0, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.start_time = start_time
         self.end_time = end_time
-        self.gdf = gdf        
+                
 
     def run(self, end_time=None):
         self.reset() ## devido aos dados no chart
