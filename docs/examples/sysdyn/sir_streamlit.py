@@ -44,7 +44,7 @@ display_inputs(sir, st.sidebar)
 
 
 # Inicializa o componente de gráfico com uma area reservada para o gráfico
-StreamlitChart(plot_area=st.empty())
+Chart(plot_area=st.empty())
 
 # Executa a simulação ao clicar no botão
 if executar:
