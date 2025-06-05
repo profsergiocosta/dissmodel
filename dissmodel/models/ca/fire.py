@@ -2,10 +2,13 @@
 
 from dissmodel.core import Model
 
+from dissmodel.geo.neihborhood import Neighborhood
+
 # Fire in the forest
 # https://github.com/TerraME/terrame/wiki/Paradigms
 
-
+from libpysal.weights.contiguity import Rook
+from libpysal.weights.contiguity import Queen
 
 class FireModel(Model):
 
@@ -13,16 +16,18 @@ class FireModel(Model):
     BURNING = 1
     BURNED = 2
 
+    def setup (self,gdf):
+         self.gdf = gdf
+         self.neighborhood = Neighborhood(Queen, gdf, use_index=True)
 
     def rule(self, idx):
 
-        state = self.env.gdf.loc[idx].state
+        state = self.gdf.loc[idx].state
              
         if state == FireModel.BURNING:
             return FireModel.BURNED
         elif state == FireModel.FOREST:
-                #neighs = self.env.gdf.loc[self.neighs(idx)]
-                neighs = self.neighs(idx)
+                neighs = self.neighborhood.neighs(idx)
 
                 if (neighs.state == FireModel.BURNING).any():
                      return FireModel.BURNING
@@ -34,4 +39,4 @@ class FireModel(Model):
 
     def execute(self):
         # Aplicar a função `rule` a todos os índices e armazenar os novos estados
-        self.env.gdf["state"] = self.env.gdf.index.map(self.rule)
+        self.gdf["state"] = self.gdf.index.map(self.rule)

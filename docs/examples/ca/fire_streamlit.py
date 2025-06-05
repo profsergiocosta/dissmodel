@@ -7,7 +7,7 @@ from dissmodel.core.spatial import regular_grid, fill
 
 from dissmodel.visualization import Map
 
-from dissmodel.visualization.streamlit import StreamlitMap
+
 
 
 from matplotlib.colors import ListedColormap
@@ -39,7 +39,7 @@ env = Environment (
 )
 
 # simulação  
-FireModel(create_neighbohood="Rook")
+FireModel( gdf = gdf)
 
 
 # Inicializar estado da sessão
@@ -52,7 +52,8 @@ if st.button("Executar Simulação"):
     custom_cmap = ListedColormap(['green', 'red', 'brown'])
     plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
 
-    StreamlitMap(  
+    Map(  
+        gdf = gdf,
         plot_area = plot_area,
         plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
     )
