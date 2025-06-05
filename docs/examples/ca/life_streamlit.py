@@ -71,7 +71,8 @@ if st.button("Executar Simulação"):
     # Área de plotagem reservada
     plot_area = st.empty()
 
-    StreamlitMap(  
+    Map(  
+        gdf=grid,
         plot_area = plot_area,
         plot_params={ "column": "state","cmap": custom_cmap,  "ec" : 'black'}
     )
