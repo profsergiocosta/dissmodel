@@ -1,5 +1,5 @@
 import salabim as sim
-from pysal.lib import weights
+
 
 class Model (sim.Component):
 
