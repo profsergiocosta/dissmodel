@@ -2,9 +2,9 @@ import streamlit as st
 
 from dissmodel.core import Environment
 from dissmodel.visualization import Chart
-from dissmodel.visualization.streamlit import StreamlitChart, display_inputs
+from dissmodel.visualization.streamlit import  display_inputs
 
-from dissmodel.models.sysdyn import SIR
+from models import SIR
 
 
 ############################
