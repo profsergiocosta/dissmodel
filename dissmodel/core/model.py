@@ -1,21 +1,25 @@
 import salabim as sim
 
+import math
 
-class Model (sim.Component):
-
-
-    def __init__(self, hold = 1, name="",  *args, **kwargs):
+class Model(sim.Component):
+    def __init__(self, step=1, start_time=0, end_time=math.inf, name="", *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.name = name
-        self._hold = hold
+        self._step = step
+        self._start_time = start_time
+        self._end_time = end_time
 
-        
     def process(self):
-            while True: 
-                self.execute() 
-                self.hold(self._hold)
-    
-    
+        # Espera até o tempo de início, se necessário
+        if self.env.now() < self._start_time:
+            self.hold(self._start_time - self.env.now())
+
+        # Executa até o tempo de término
+        while self.env.now() < self._end_time:
+            self.execute()
+            self.hold(self._step)
+
 
     def __setattr__(self, name, value):
         
