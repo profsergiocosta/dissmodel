@@ -24,7 +24,7 @@ def track_plot(label, color, plot_type="line"):
 
 
 class Chart(Model):
-    def setup(self, select= None, pause=True):
+    def setup(self, select=None, pause=True, plot_area=None):
         import matplotlib.pyplot as plt
         self.select = select
         self.interval = 1
@@ -33,17 +33,17 @@ class Chart(Model):
         self.ax.set_xlabel("Tempo")
         self.ax.set_title("Histórico das Variáveis")
         self.pause = pause
+        self.plot_area = plot_area
 
     def execute(self):
         import matplotlib.pyplot as plt
         plt.sca(self.ax)
         self.time_points.append(self.env.now())
 
-        # Garante que _plot_metadata exista
         plot_metadata = getattr(self.env, "_plot_metadata", {})
         
-        for label, info in plot_metadata.items():   
-            if self.select == None or label in self.select:
+        for label, info in plot_metadata.items():
+            if self.select is None or label in self.select:
                 self.ax.plot(info["data"], label=label, color=info["color"])
 
         if self.env.now() == 0:
@@ -53,8 +53,12 @@ class Chart(Model):
         self.ax.autoscale_view()
         plt.draw()
 
-
-        if self.pause:
+        # Exibição condicional: Streamlit ou local
+        if self.plot_area:
+            self.plot_area.pyplot(self.fig)
+        elif self.pause:
             plt.pause(0.1)
             if self.env.now() == self.env.end_time:
                 plt.show()
+
+
