@@ -8,5 +8,7 @@ theme:
 nav:
   - Início: index.md
   - Exemplos:
-      - Game of Life: examples/game_of_life.md
-      - Modelo de Queimada: examples/fire_model.md
+      - Autômatos Celulares:
+          - Introdução: examples/CA/index.md
+          - Game of Life: examples/CA/game_of_life.md
+          - Modelo de Queimada: examples/CA/fire_model.md
