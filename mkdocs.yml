@@ -5,8 +5,15 @@ repo_name: GitHub
 theme:
   name: material
   language: pt
+
+markdown_extensions:
+  - codehilite
+  - pymdownx.highlight
+  - pymdownx.superfences
+
 nav:
   - Início: index.md
+  - Módulo Core: core.md
   - Exemplos:
       - Autômatos Celulares:
           - Introdução: examples/CA/index.md

@@ -26,4 +26,4 @@ A documentação está estruturada em quatro módulos principais, cada um com se
 3. **Módulo Visualization (Matplotlib, Streamlit)**: O módulo de visualização é projetado para criar gráficos e interfaces interativas. Usando **Matplotlib**, é possível gerar gráficos estáticos detalhados, enquanto **Streamlit** facilita a criação de interfaces interativas, permitindo ao usuário visualizar e manipular os resultados de maneira dinâmica e em tempo real.
 4. **Módulo Publish (DataWorld)**: O módulo de publicação integra a ferramenta ao **DataWorld**, um ambiente colaborativo para visualização e compartilhamento de dados. Esta funcionalidade facilita a publicação de resultados, permitindo que o modelo e seus dados possam ser compartilhados e acessados por outros usuários de forma simples e eficiente.
 
-![image.png](attachment:8266bba6-a44a-49b5-9316-c344a08f348c:image.png)
+![image.png](images/arquitetura.webp)
