@@ -268,9 +268,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#exemplos-disponiveis" class="md-nav__link">
+  <a href="#visao-geral-da-ferramenta" class="md-nav__link">
     <span class="md-ellipsis">
-      Exemplos disponíveis
+      Visão Geral da Ferramenta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrutura-da-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estrutura da Documentação
     </span>
   </a>
   
@@ -471,9 +489,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#exemplos-disponiveis" class="md-nav__link">
+  <a href="#visao-geral-da-ferramenta" class="md-nav__link">
     <span class="md-ellipsis">
-      Exemplos disponíveis
+      Visão Geral da Ferramenta
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrutura-da-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estrutura da Documentação
     </span>
   </a>
   
@@ -500,11 +536,26 @@
 
 <h1 id="dissmodel">DisSModel</h1>
 <p>Biblioteca para modelagem baseada em agentes e autômatos celulares com suporte espacial.</p>
-<h2 id="exemplos-disponiveis">Exemplos disponíveis</h2>
+<h3 id="visao-geral-da-ferramenta">Visão Geral da Ferramenta</h3>
+<p>A ferramenta que aqui se apresenta foi concebida para a construção e análise de modelos discretos, com ênfase na simulação de sistemas dinâmicos espaciais. Inspirada na biblioteca <strong>Terrame</strong>, a proposta é proporcionar um ambiente flexível e integrado ao ecossistema <strong>Python</strong>, utilizando um conjunto de bibliotecas amplamente reconhecidas no mercado para facilitar tanto a modelagem quanto a visualização de dados espaciais.</p>
+<p>Embora a Terrame seja focada na simulação discreta e no controle de eventos discretos no domínio territorial, a versão Python propõe uma série de módulos especializados para integrar funcionalidades geoespaciais, controle de eventos e visualização de maneira mais modular e extensível.</p>
+<h3 id="objetivos">Objetivos</h3>
 <ul>
-<li><a href="examples/game_of_life.md">Game of Life</a></li>
-<li><a href="examples/fire_model.md">Modelo de Queimada</a></li>
+<li><strong>Modelagem Discreta</strong>: A ferramenta permite a criação de modelos discretos, utilizando a biblioteca <strong>Salabim</strong> para controle de eventos discretos.</li>
+<li><strong>Integração Espacial</strong>: Oferece uma camada robusta de suporte à análise espacial por meio do uso de bibliotecas como <strong>GeoPandas</strong>, <strong>PySAL</strong>, <strong>Shapely</strong> e <strong>RasterStats</strong>, que permitem o tratamento e análise de dados geoespaciais.</li>
+<li><strong>Visualização Interativa</strong>: Com o auxílio de <strong>Matplotlib</strong> e <strong>Streamlit</strong>, proporciona visualizações ricas e interativas dos modelos gerados, auxiliando na análise e na interpretação dos dados de maneira intuitiva.</li>
+<li><strong>Publicação e Integração</strong>: Inclui uma integração com o <strong>DataWorld</strong>, permitindo que os modelos e resultados possam ser facilmente compartilhados, documentados e publicados.</li>
 </ul>
+<p>Esta ferramenta foi criada com o intuito de oferecer aos pesquisadores, analistas e engenheiros uma plataforma eficiente e adaptável para realizar experimentos e gerar resultados significativos em modelos discretos e análises espaciais.</p>
+<h3 id="estrutura-da-documentacao">Estrutura da Documentação</h3>
+<p>A documentação está estruturada em quatro módulos principais, cada um com seu foco específico. A seguir, apresentamos os principais módulos que compõem a ferramenta:</p>
+<ol>
+<li><strong>Módulo Core (Salabim)</strong>: O módulo central da ferramenta, responsável pelo controle de eventos discretos e pela simulação do comportamento do modelo. Este módulo utiliza a biblioteca <strong>Salabim</strong>, que oferece funcionalidades robustas para a modelagem de processos discretos e controle de eventos no tempo.</li>
+<li><strong>Módulo Geo (GeoPandas, PySAL, Shapely, RasterStats)</strong>: Este módulo oferece a infraestrutura necessária para trabalhar com dados geoespaciais. Com o uso de <strong>GeoPandas</strong>, é possível carregar, manipular e analisar dados geográficos em diversos formatos. Além disso, <strong>PySAL</strong> e <strong>Shapely</strong> permitem a análise espacial e a geração de vizinhanças, enquanto <strong>RasterStats</strong> possibilita a análise de dados rasterizados.</li>
+<li><strong>Módulo Visualization (Matplotlib, Streamlit)</strong>: O módulo de visualização é projetado para criar gráficos e interfaces interativas. Usando <strong>Matplotlib</strong>, é possível gerar gráficos estáticos detalhados, enquanto <strong>Streamlit</strong> facilita a criação de interfaces interativas, permitindo ao usuário visualizar e manipular os resultados de maneira dinâmica e em tempo real.</li>
+<li><strong>Módulo Publish (DataWorld)</strong>: O módulo de publicação integra a ferramenta ao <strong>DataWorld</strong>, um ambiente colaborativo para visualização e compartilhamento de dados. Esta funcionalidade facilita a publicação de resultados, permitindo que o modelo e seus dados possam ser compartilhados e acessados por outros usuários de forma simples e eficiente.</li>
+</ol>
+<p><img alt="image.png" src="attachment:8266bba6-a44a-49b5-9316-c344a08f348c:image.png" /></p>
 
 
 
