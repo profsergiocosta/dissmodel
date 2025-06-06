@@ -1,4 +1,3 @@
-## Módulo Core
 
 ### Overview
 
@@ -10,7 +9,7 @@ O **Módulo Core** se baseia na poderosa biblioteca **Salabim**, que permite a c
 
 A classe **Environment** é uma extensão da classe `sim.Environment` do **Salabim**, que foi customizada para permitir a definição de um **tempo inicial e tempo final** de simulação, oferecendo maior flexibilidade no controle da execução.
 
-### Funcionalidades
+#### Funcionalidades
 
 - **Tempo Inicial e Final Personalizados**: A classe permite a definição de um `start_time` e `end_time` personalizados para a simulação, proporcionando um controle mais preciso sobre os períodos em que a simulação deve ocorrer.
 - **Execução da Simulação**: O método `run` da classe é responsável por rodar a simulação, respeitando os tempos de início e fim definidos. Se um tempo `till` for fornecido, ele substituirá o `end_time`, permitindo maior flexibilidade durante a execução.
@@ -20,7 +19,7 @@ A classe **Environment** é uma extensão da classe `sim.Environment` do **Salab
 
 A classe **Model** é uma extensão da classe `sim.Component` do **Salabim**, com melhorias no controle de tempo de execução e no armazenamento de dados para visualizações gráficas.
 
-### Funcionalidades
+#### Funcionalidades
 
 - **Controle de Tempo Personalizado**: Assim como na classe `Environment`, a classe **Model** permite que a simulação seja controlada por **tempo de início** e **tempo de término** definidos pelo usuário.
 - **Execução do Processo**: O método `process` controla o ciclo de vida do modelo, aguardando até o **tempo de início** e realizando a execução até o **tempo de término**. O processo pode ser dividido em etapas (passos), com o tempo de espera entre essas etapas configurado pelo usuário.
@@ -55,11 +54,10 @@ A classe **Model** é uma extensão da classe `sim.Component` do **Salabim**, co
 
 Essas duas classes proporcionam um controle mais fino sobre os tempos de execução e permitem coletar dados automaticamente para visualização, o que facilita a análise dos resultados. Elas são fundamentais para construir modelos discretos mais dinâmicos e personalizados.
 
-### Exemplos de Execução no Módulo Core
+### Exemplo
 
 O controle de tempo no **Módulo Core** é um dos aspectos mais poderosos da ferramenta. A seguir, apresentamos um exemplo prático que demonstra como diferentes modelos podem ser executados em um ambiente de simulação com tempos de início e fim específicos, permitindo a execução paralela ou sequencial.
 
-### Exemplo de Simulação com Vários Modelos
 
 Vamos ilustrar como três modelos (`ModeloA`, `ModeloB` e `ModeloC`) podem ser configurados para executar em diferentes intervalos de tempo dentro de um ambiente de simulação. O exemplo abaixo utiliza as classes **Environment** e **Model** do módulo **Core**.
 
@@ -93,7 +91,7 @@ env_a.run()
 
 ```
 
-### Saída Esperada:
+**Saída Esperada**
 
 ```
 Running from 2010 to 2016 (duration: 6)
@@ -115,7 +113,7 @@ Running from 2010 to 2016 (duration: 6)
 
 ```
 
-### Interpretação dos Resultados
+#### Interpretação dos Resultados
 
 Neste exemplo, instanciamos um ambiente de simulação com intervalo temporal entre **2010** e **2016**. Três modelos distintos são inseridos nesse ambiente, cada um com sua configuração temporal específica:
 
@@ -124,3 +122,46 @@ Neste exemplo, instanciamos um ambiente de simulação com intervalo temporal en
 - `ModeloC`: executa continuamente durante todo o intervalo da simulação, de 2010 a 2016.
 
 A saída mostra os registros temporais de execução de cada modelo, evidenciando como o mecanismo de controle de tempo personalizado permite a execução simultânea e coordenada dos modelos, de acordo com seus respectivos intervalos de atuação.
+
+### Modelagem Orientada a Objetos
+
+A ferramenta é estruturada com base nos princípios de **programação orientada a objetos (POO)**, permitindo encapsular dados e comportamentos em classes reutilizáveis, estendendo modelos e compondo sistemas complexos de forma modular.
+
+Cada modelo criado herda da classe base `Model`, que garante a integração com o ambiente de simulação (`Environment`) e permite que métodos como `setup()` e `execute()` sejam chamados automaticamente a cada passo da simulação.
+
+**Exemplo: Modelo SIR**
+
+```python
+class SIR(Model):
+    susceptible: int
+    infected: int
+    recovered: int
+    duration: int
+
+    def __init__(self, susceptible=9998, infected=2, recovered=0, duration=2,
+                 contacts=6, probability=0.25, final_time=30):
+        super().__init__()
+        self.susceptible = susceptible
+        self.infected = infected
+        self.recovered = recovered
+        self.duration = duration
+        self.contacts = contacts
+        self.probability = probability
+        self.final_time = final_time
+
+    def update(self):
+        total = self.susceptible + self.infected + self.recovered
+        alpha = self.contacts * self.probability
+        prop = self.susceptible / total
+        new_infected = self.infected * alpha * prop
+        new_recovered = self.infected / self.duration
+        self.susceptible -= new_infected
+        self.infected += new_infected - new_recovered
+        self.recovered += new_recovered
+
+    def execute(self):
+        self.update()
+
+```
+
+A estrutura orientada a objetos facilita a extensão do modelo, a separação de responsabilidades e a reutilização de lógica entre diferentes simulações.

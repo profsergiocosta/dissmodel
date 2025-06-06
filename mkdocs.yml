@@ -13,7 +13,9 @@ markdown_extensions:
 
 nav:
   - Início: index.md
-  - Módulo Core: core.md
+  - Módulos:
+    - Core: modules/core.md
+    - Visualization: modules/visualization.md
   - Exemplos:
       - Autômatos Celulares:
           - Introdução: examples/CA/index.md
