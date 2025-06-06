@@ -8,16 +8,16 @@
       
       
       
-        <link rel="canonical" href="https://profsergiocosta.github.io/dissmodel/examples/game_of_life/">
+        <link rel="canonical" href="https://profsergiocosta.github.io/dissmodel/examples/CA/game_of_life/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../">
       
       
         <link rel="next" href="../fire_model/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#game-of-life" class="md-skip">
+        <a href="#exemplo-1-game-of-life-jogo-da-vida" class="md-skip">
           Ir para o conteúdo
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href="../.." title="DisSModel" class="md-header__button md-logo" aria-label="DisSModel" data-md-component="logo">
+    <a href="../../.." title="DisSModel" class="md-header__button md-logo" aria-label="DisSModel" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -190,7 +190,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="DisSModel" class="md-nav__button md-logo" aria-label="DisSModel" data-md-component="logo">
+    <a href="../../.." title="DisSModel" class="md-nav__button md-logo" aria-label="DisSModel" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -220,7 +220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -283,12 +283,73 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Autômatos Celulares
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Autômatos Celulares
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -322,8 +383,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -332,20 +391,59 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#funcionamento" class="md-nav__link">
+  <a href="#exemplo-1-game-of-life-jogo-da-vida" class="md-nav__link">
     <span class="md-ellipsis">
-      Funcionamento
+      🔲 Exemplo 1: Game of Life (Jogo da Vida)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔲 Exemplo 1: Game of Life (Jogo da Vida)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-do-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Componentes do Modelo
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#resultado-da-simulacao" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#visualizacao" class="md-nav__link">
     <span class="md-ellipsis">
-      Resultado da simulação
+      🖼️ Visualização
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🖼️ Visualização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      📷 Exemplo de execução
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-completo-game-of-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Código completo (Game of Life)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -387,6 +485,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
   </ul>
 </nav>
@@ -405,8 +511,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -415,20 +519,59 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#funcionamento" class="md-nav__link">
+  <a href="#exemplo-1-game-of-life-jogo-da-vida" class="md-nav__link">
     <span class="md-ellipsis">
-      Funcionamento
+      🔲 Exemplo 1: Game of Life (Jogo da Vida)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔲 Exemplo 1: Game of Life (Jogo da Vida)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-do-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Componentes do Modelo
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#resultado-da-simulacao" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#visualizacao" class="md-nav__link">
     <span class="md-ellipsis">
-      Resultado da simulação
+      🖼️ Visualização
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🖼️ Visualização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      📷 Exemplo de execução
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-completo-game-of-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Código completo (Game of Life)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -451,16 +594,106 @@
   
 
 
-<h1 id="game-of-life">Game of Life</h1>
-<p>Este exemplo demonstra o autômato celular clássico de Conway, implementado no framework DisSModel.</p>
-<h2 id="funcionamento">Funcionamento</h2>
+  <h1>Game of Life</h1>
+
+<h2 id="exemplo-1-game-of-life-jogo-da-vida">🔲 Exemplo 1: Game of Life (Jogo da Vida)</h2>
+<p>O <strong>Game of Life</strong>, criado por John Conway, é um autômato celular clássico com regras simples:</p>
 <ul>
-<li>Células vivas com 2 ou 3 vizinhos sobrevivem.</li>
-<li>Células mortas com exatamente 3 vizinhos tornam-se vivas.</li>
-<li>As demais morrem ou permanecem mortas.</li>
+<li>Uma célula <strong>viva</strong> permanece viva com 2 ou 3 vizinhos vivos.</li>
+<li>Uma célula <strong>morta</strong> revive com exatamente 3 vizinhos vivos.</li>
 </ul>
-<h2 id="resultado-da-simulacao">Resultado da simulação</h2>
+<h3 id="componentes-do-modelo">🧩 Componentes do Modelo</h3>
+<ul>
+<li>A grade é inicializada com padrões (ex: <code>glider</code>, <code>toad</code>, etc.), usando <code>fill(..., strategy=FillStrategy.PATTERN)</code>.</li>
+<li>A vizinhança usada é a <strong>Queen</strong>, que considera os 8 vizinhos ao redor.</li>
+<li>A regra de atualização verifica o número de vizinhos vivos para decidir o próximo estado.</li>
+</ul>
+<pre><code class="language-python">class GameOfLife(Model):
+    def rule(self, idx):
+        value = self.gdf.loc[idx].state
+        count = self.neighborhood.neighs(idx)[&quot;state&quot;].fillna(0).sum()
+        if value == 1:
+            return 1 if count in [2, 3] else 0
+        else:
+            return 1 if count == 3 else 0
+</code></pre>
+<h3 id="visualizacao">🖼️ Visualização</h3>
+<p>A visualização utiliza <code>Map(...)</code> com colormap personalizado:</p>
+<ul>
+<li>Células <strong>vivas</strong> em vermelho (<code>state = 1</code>)</li>
+<li>Células <strong>mortas</strong> em verde (<code>state = 0</code>)</li>
+<li>Interface interativa com <code>Streamlit</code> para ajustar tamanho da grade e passos da simulação.</li>
+</ul>
+<h4 id="exemplo-de-execucao">📷 Exemplo de execução</h4>
 <p><img alt="Game of Life" src="../images/life.png" /></p>
+<hr />
+<h3 id="codigo-completo-game-of-life">💻 Código completo (Game of Life)</h3>
+<pre><code class="language-python">from dissmodel.core import Model, Environment
+from dissmodel.geo import regular_grid, fill, FillStrategy, Neighborhood
+from dissmodel.visualization.map import Map
+from matplotlib.colors import ListedColormap
+import streamlit as st
+import random
+from libpysal.weights.contiguity import Queen
+
+class GameOfLife(Model):
+    patterns = {
+        &quot;glider&quot;: [
+            [0, 1, 0],
+            [0, 0, 1],
+            [1, 1, 1]
+        ],
+        &quot;toad&quot;: [
+            [0, 1, 1, 1],
+            [1, 1, 1, 0]
+        ],
+        &quot;blinker&quot;: [
+            [1, 1, 1]
+        ]
+    }
+
+    def setup(self, gdf):
+        self.gdf = gdf
+        self.neighborhood = Neighborhood(Queen, gdf, use_index=True)   
+
+    def rule(self, idx):
+        value = self.gdf.loc[idx].state
+        neighs = self.neighborhood.neighs(idx)
+        count = neighs[&quot;state&quot;].fillna(0).sum()
+        if value == 1:
+            return 1 if count in [2, 3] else 0
+        else:
+            return 1 if count == 3 else 0
+
+    def execute(self):
+        self.gdf[&quot;state&quot;] = self.gdf.index.map(self.rule)
+        print(self.env.now())
+
+st.set_page_config(page_title=&quot;Modelo Game of Life&quot;, layout=&quot;centered&quot;)
+st.title(&quot;Simulação com Game of Life (DisSModel)&quot;)
+
+st.sidebar.title(&quot;Parâmetros do Modelo&quot;)
+steps = st.sidebar.slider(&quot;Número de passos da simulação&quot;, min_value=1, max_value=50, value=10)
+grid_dim = st.sidebar.slider(&quot;Tamanho da grade&quot;, min_value=5, max_value=50, value=20)
+
+custom_cmap = ListedColormap(['green', 'red'])
+plot_params = { &quot;column&quot;: &quot;state&quot;, &quot;cmap&quot;: custom_cmap, &quot;ec&quot;: 'black' }
+
+grid = regular_grid(dimension=(grid_dim, grid_dim), resolution=1, attrs={'state': 0})
+
+for name, pattern in GameOfLife.patterns.items():
+    start_x = random.randint(0, grid_dim - 5)
+    start_y = random.randint(0, grid_dim - 5)
+    fill(strategy=FillStrategy.PATTERN, gdf=grid, attr=&quot;state&quot;, pattern=pattern, start_x=start_x, start_y=start_y)
+
+env = Environment(end_time=steps, start_time=0)
+GameOfLife(gdf=grid)
+
+if st.button(&quot;Executar Simulação&quot;):
+    plot_area = st.empty()
+    Map(gdf=grid, plot_area=plot_area, plot_params=plot_params)
+    env.run()
+</code></pre>
 
 
 
@@ -509,10 +742,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
