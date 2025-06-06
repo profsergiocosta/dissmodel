@@ -48,7 +48,8 @@ class Neighborhood:
         raise ValueError("Não foi possível identificar o GeoDataFrame.")
 
     def neighs(self, idx):
-        ns = self.w_.neighbors.get(idx, [])
+        #ns = self.w_.neighbors.get(idx, [])
+        ns = self.w_.neighbors[idx]
         return self.df.loc[ns]
 
     def idxs(self, idx):

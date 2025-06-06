@@ -37,6 +37,24 @@ def generate_sample(data, size=1):
 
 
 # === Estratégias de preenchimento ===
+@register_strategy(FillStrategy.PATTERN)
+def fill_regular_grid(gdf, attr, pattern, start_x=0, start_y=0):
+    """
+    Preenche atributos em um GeoDataFrame com base em um padrão regular (grid).
+
+    Parameters:
+        gdf (GeoDataFrame): GeoDataFrame cujas células serão preenchidas.
+        attr (str): Nome do atributo a ser preenchido.
+        pattern (list[list]): Padrão (grid) a ser aplicado.
+        start_x (int): Offset inicial na direção x.
+        start_y (int): Offset inicial na direção y.
+    """    
+    w = len(pattern)
+    h = len(pattern[0])
+    for i in range(w):
+        for j in range(h):
+            idx = f"{start_x + i}-{start_y + j}"
+            gdf.loc[idx, attr] = pattern[w - i - 1][j]
 
 @register_strategy(FillStrategy.RANDOM_SAMPLE)
 def fill_random_sample(gdf, attr, data, seed=None):
