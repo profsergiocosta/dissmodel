@@ -237,6 +237,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Módulo Core
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -250,10 +272,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -266,8 +288,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Exemplos
           </label>
@@ -290,10 +312,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
             
   
   
@@ -306,8 +328,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Autômatos Celulares
           </label>
@@ -624,96 +646,96 @@
 <li>Uma célula <strong>queimada</strong> pode voltar a ser floresta com chance de <strong>regeneração</strong>.</li>
 </ul>
 <h3 id="estados">Estados</h3>
-<pre><code class="language-python">FOREST = 0      # Verde
-BURNING = 1     # Vermelho
-BURNED = 2      # Marrom
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">FOREST</span> <span class="o">=</span> <span class="mi">0</span>      <span class="c1"># Verde</span>
+<span class="n">BURNING</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># Vermelho</span>
+<span class="n">BURNED</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># Marrom</span>
+</code></pre></div>
 <h3 id="regra-de-transicao">Regra de transição</h3>
-<pre><code class="language-python">def rule(self, idx):
-    state = self.gdf.loc[idx].state
-    if state == FOREST:
-        neighs = self.neighborhood.neighs(idx)
-        if (neighs.state == BURNING).any():
-            return BURNING
-        return BURNING if random.random() &lt; self.prob_combustion else FOREST
-    elif state == BURNING:
-        return BURNED
-    else:
-        return FOREST if random.random() &lt; self.prob_regrowth else BURNED
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">state</span>
+    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">FOREST</span><span class="p">:</span>
+        <span class="n">neighs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span><span class="o">.</span><span class="n">neighs</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">neighs</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">BURNING</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">BURNING</span>
+        <span class="k">return</span> <span class="n">BURNING</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob_combustion</span> <span class="k">else</span> <span class="n">FOREST</span>
+    <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="n">BURNING</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">BURNED</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FOREST</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob_regrowth</span> <span class="k">else</span> <span class="n">BURNED</span>
+</code></pre></div>
 <h3 id="variacao-estrategias-de-vizinhanca">Variação: Estratégias de Vizinhança</h3>
 <p>Você pode trocar o tipo de vizinhança com um único parâmetro:</p>
-<pre><code class="language-python">self.neighborhood = Neighborhood(Rook, gdf, use_index=True)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span> <span class="o">=</span> <span class="n">Neighborhood</span><span class="p">(</span><span class="n">Rook</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">use_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <p>Ou usar <strong>KNN (K-Nearest Neighbors)</strong>:</p>
-<pre><code class="language-python">from libpysal.weights import KNN
-neigh = Neighborhood(KNN, gdf, k=4, use_index=True)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">libpysal.weights</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNN</span>
+<span class="n">neigh</span> <span class="o">=</span> <span class="n">Neighborhood</span><span class="p">(</span><span class="n">KNN</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">use_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="exemplo-de-execucao">📷 Exemplo de execução</h4>
 <p><img alt="FireModel" src="../images/fireprob.png" /></p>
 <hr />
 <h3 id="codigo-completo-firemodelprob">💻 Código completo (FireModelProb)</h3>
-<pre><code class="language-python">from dissmodel.core import Model, Environment
-from dissmodel.geo.regular_grid import regular_grid
-from dissmodel.geo.fill import fill
-from dissmodel.visualization import Map
-from dissmodel.visualization.streamlit import display_inputs
-from matplotlib.colors import ListedColormap
-import streamlit as st
-import random
-from dissmodel.geo.neihborhood import Neighborhood
-from libpysal.weights.contiguity import Queen
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Environment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.geo.regular_grid</span><span class="w"> </span><span class="kn">import</span> <span class="n">regular_grid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.geo.fill</span><span class="w"> </span><span class="kn">import</span> <span class="n">fill</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">Map</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.visualization.streamlit</span><span class="w"> </span><span class="kn">import</span> <span class="n">display_inputs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.geo.neihborhood</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neighborhood</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">libpysal.weights.contiguity</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queen</span>
 
-class FireModelProb(Model):
-    FOREST = 0
-    BURNING = 1
-    BURNED = 2
+<span class="k">class</span><span class="w"> </span><span class="nc">FireModelProb</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">FOREST</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">BURNING</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">BURNED</span> <span class="o">=</span> <span class="mi">2</span>
 
-    def __init__(self, gdf, prob_combustion=0.001, prob_regrowth=0.1, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.prob_combustion = prob_combustion
-        self.prob_regrowth = prob_regrowth
-        self.gdf = gdf
-        self.neighborhood = Neighborhood(Queen, gdf, use_index=True)
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">prob_combustion</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">prob_regrowth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prob_combustion</span> <span class="o">=</span> <span class="n">prob_combustion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prob_regrowth</span> <span class="o">=</span> <span class="n">prob_regrowth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span> <span class="o">=</span> <span class="n">Neighborhood</span><span class="p">(</span><span class="n">Queen</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">use_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    def rule(self, idx):
-        state = self.gdf.loc[idx].state
-        if state == FireModelProb.FOREST:
-            neighs = self.neighborhood.neighs(idx)
-            if (neighs.state == FireModelProb.BURNING).any():
-                return FireModelProb.BURNING
-            else:
-                return FireModelProb.BURNING if random.random() &lt;= self.prob_combustion else FireModelProb.FOREST
-        elif state == FireModelProb.BURNING:
-            return FireModelProb.BURNED
-        else:
-            return FireModelProb.FOREST if random.random() &lt;= self.prob_regrowth else FireModelProb.BURNED
+    <span class="k">def</span><span class="w"> </span><span class="nf">rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">state</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">FOREST</span><span class="p">:</span>
+            <span class="n">neighs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span><span class="o">.</span><span class="n">neighs</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">neighs</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">BURNING</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">BURNING</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">BURNING</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob_combustion</span> <span class="k">else</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">FOREST</span>
+        <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">BURNING</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">BURNED</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">FOREST</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob_regrowth</span> <span class="k">else</span> <span class="n">FireModelProb</span><span class="o">.</span><span class="n">BURNED</span>
 
-    def execute(self):
-        self.gdf[&quot;state&quot;] = self.gdf.index.map(self.rule)
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rule</span><span class="p">)</span>
 
-st.set_page_config(page_title=&quot;Fire Model&quot;, layout=&quot;centered&quot;)
-st.title(&quot;Fire Model (DisSModel)&quot;)
+<span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span><span class="n">page_title</span><span class="o">=</span><span class="s2">&quot;Fire Model&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;centered&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fire Model (DisSModel)&quot;</span><span class="p">)</span>
 
-st.sidebar.title(&quot;Parâmetros do Modelo&quot;)
-steps = st.sidebar.slider(&quot;Número de passos da simulação&quot;, min_value=1, max_value=50, value=10)
-grid_dim = st.sidebar.slider(&quot;Tamanho da grade&quot;, min_value=5, max_value=100, value=20)
-executar = st.button(&quot;Executar Simulação&quot;)
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parâmetros do Modelo&quot;</span><span class="p">)</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Número de passos da simulação&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">grid_dim</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Tamanho da grade&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">executar</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Executar Simulação&quot;</span><span class="p">)</span>
 
-gdf = regular_grid(dimension=(grid_dim, grid_dim), resolution=1, attrs={'state': 0})
-env = Environment(end_time=steps, start_time=0)
-fire = FireModelProb(gdf=gdf)
-display_inputs(fire, st.sidebar)
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">regular_grid</span><span class="p">(</span><span class="n">dimension</span><span class="o">=</span><span class="p">(</span><span class="n">grid_dim</span><span class="p">,</span> <span class="n">grid_dim</span><span class="p">),</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">end_time</span><span class="o">=</span><span class="n">steps</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fire</span> <span class="o">=</span> <span class="n">FireModelProb</span><span class="p">(</span><span class="n">gdf</span><span class="o">=</span><span class="n">gdf</span><span class="p">)</span>
+<span class="n">display_inputs</span><span class="p">(</span><span class="n">fire</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">)</span>
 
-plot_area = st.empty()
-custom_cmap = ListedColormap(['green', 'red', 'brown'])
-plot_params = {&quot;column&quot;: &quot;state&quot;, &quot;cmap&quot;: custom_cmap, &quot;ec&quot;: &quot;black&quot;}
+<span class="n">plot_area</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+<span class="n">custom_cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">])</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;column&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;cmap&quot;</span><span class="p">:</span> <span class="n">custom_cmap</span><span class="p">,</span> <span class="s2">&quot;ec&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">}</span>
 
-Map(gdf=gdf, plot_area=plot_area, plot_params=plot_params)
+<span class="n">Map</span><span class="p">(</span><span class="n">gdf</span><span class="o">=</span><span class="n">gdf</span><span class="p">,</span> <span class="n">plot_area</span><span class="o">=</span><span class="n">plot_area</span><span class="p">,</span> <span class="n">plot_params</span><span class="o">=</span><span class="n">plot_params</span><span class="p">)</span>
 
-if executar:
-    env.run()
-</code></pre>
+<span class="k">if</span> <span class="n">executar</span><span class="p">:</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
 
 
 

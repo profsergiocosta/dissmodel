@@ -239,6 +239,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Módulo Core
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -252,10 +274,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -268,8 +290,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Exemplos
           </label>
@@ -292,10 +314,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
             
   
   
@@ -308,8 +330,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Autômatos Celulares
           </label>
@@ -608,15 +630,15 @@
 <li>A vizinhança usada é a <strong>Queen</strong>, que considera os 8 vizinhos ao redor.</li>
 <li>A regra de atualização verifica o número de vizinhos vivos para decidir o próximo estado.</li>
 </ul>
-<pre><code class="language-python">class GameOfLife(Model):
-    def rule(self, idx):
-        value = self.gdf.loc[idx].state
-        count = self.neighborhood.neighs(idx)[&quot;state&quot;].fillna(0).sum()
-        if value == 1:
-            return 1 if count in [2, 3] else 0
-        else:
-            return 1 if count == 3 else 0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GameOfLife</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">state</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span><span class="o">.</span><span class="n">neighs</span><span class="p">(</span><span class="n">idx</span><span class="p">)[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">count</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">0</span>
+</code></pre></div>
 <h3 id="visualizacao">🖼️ Visualização</h3>
 <p>A visualização utiliza <code>Map(...)</code> com colormap personalizado:</p>
 <ul>
@@ -628,72 +650,72 @@
 <p><img alt="Game of Life" src="../images/life.png" /></p>
 <hr />
 <h3 id="codigo-completo-game-of-life">💻 Código completo (Game of Life)</h3>
-<pre><code class="language-python">from dissmodel.core import Model, Environment
-from dissmodel.geo import regular_grid, fill, FillStrategy, Neighborhood
-from dissmodel.visualization.map import Map
-from matplotlib.colors import ListedColormap
-import streamlit as st
-import random
-from libpysal.weights.contiguity import Queen
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Environment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.geo</span><span class="w"> </span><span class="kn">import</span> <span class="n">regular_grid</span><span class="p">,</span> <span class="n">fill</span><span class="p">,</span> <span class="n">FillStrategy</span><span class="p">,</span> <span class="n">Neighborhood</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dissmodel.visualization.map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Map</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">libpysal.weights.contiguity</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queen</span>
 
-class GameOfLife(Model):
-    patterns = {
-        &quot;glider&quot;: [
-            [0, 1, 0],
-            [0, 0, 1],
-            [1, 1, 1]
-        ],
-        &quot;toad&quot;: [
-            [0, 1, 1, 1],
-            [1, 1, 1, 0]
-        ],
-        &quot;blinker&quot;: [
-            [1, 1, 1]
-        ]
-    }
+<span class="k">class</span><span class="w"> </span><span class="nc">GameOfLife</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;glider&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;toad&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;blinker&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
 
-    def setup(self, gdf):
-        self.gdf = gdf
-        self.neighborhood = Neighborhood(Queen, gdf, use_index=True)   
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span> <span class="o">=</span> <span class="n">Neighborhood</span><span class="p">(</span><span class="n">Queen</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">use_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   
 
-    def rule(self, idx):
-        value = self.gdf.loc[idx].state
-        neighs = self.neighborhood.neighs(idx)
-        count = neighs[&quot;state&quot;].fillna(0).sum()
-        if value == 1:
-            return 1 if count in [2, 3] else 0
-        else:
-            return 1 if count == 3 else 0
+    <span class="k">def</span><span class="w"> </span><span class="nf">rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">state</span>
+        <span class="n">neighs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighborhood</span><span class="o">.</span><span class="n">neighs</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">neighs</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">count</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">0</span>
 
-    def execute(self):
-        self.gdf[&quot;state&quot;] = self.gdf.index.map(self.rule)
-        print(self.env.now())
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rule</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
 
-st.set_page_config(page_title=&quot;Modelo Game of Life&quot;, layout=&quot;centered&quot;)
-st.title(&quot;Simulação com Game of Life (DisSModel)&quot;)
+<span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span><span class="n">page_title</span><span class="o">=</span><span class="s2">&quot;Modelo Game of Life&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;centered&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Simulação com Game of Life (DisSModel)&quot;</span><span class="p">)</span>
 
-st.sidebar.title(&quot;Parâmetros do Modelo&quot;)
-steps = st.sidebar.slider(&quot;Número de passos da simulação&quot;, min_value=1, max_value=50, value=10)
-grid_dim = st.sidebar.slider(&quot;Tamanho da grade&quot;, min_value=5, max_value=50, value=20)
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parâmetros do Modelo&quot;</span><span class="p">)</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Número de passos da simulação&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">grid_dim</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Tamanho da grade&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-custom_cmap = ListedColormap(['green', 'red'])
-plot_params = { &quot;column&quot;: &quot;state&quot;, &quot;cmap&quot;: custom_cmap, &quot;ec&quot;: 'black' }
+<span class="n">custom_cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">])</span>
+<span class="n">plot_params</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;column&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;cmap&quot;</span><span class="p">:</span> <span class="n">custom_cmap</span><span class="p">,</span> <span class="s2">&quot;ec&quot;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span> <span class="p">}</span>
 
-grid = regular_grid(dimension=(grid_dim, grid_dim), resolution=1, attrs={'state': 0})
+<span class="n">grid</span> <span class="o">=</span> <span class="n">regular_grid</span><span class="p">(</span><span class="n">dimension</span><span class="o">=</span><span class="p">(</span><span class="n">grid_dim</span><span class="p">,</span> <span class="n">grid_dim</span><span class="p">),</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
 
-for name, pattern in GameOfLife.patterns.items():
-    start_x = random.randint(0, grid_dim - 5)
-    start_y = random.randint(0, grid_dim - 5)
-    fill(strategy=FillStrategy.PATTERN, gdf=grid, attr=&quot;state&quot;, pattern=pattern, start_x=start_x, start_y=start_y)
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">GameOfLife</span><span class="o">.</span><span class="n">patterns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">start_x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_dim</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">start_y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_dim</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">FillStrategy</span><span class="o">.</span><span class="n">PATTERN</span><span class="p">,</span> <span class="n">gdf</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="n">pattern</span><span class="p">,</span> <span class="n">start_x</span><span class="o">=</span><span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="o">=</span><span class="n">start_y</span><span class="p">)</span>
 
-env = Environment(end_time=steps, start_time=0)
-GameOfLife(gdf=grid)
+<span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">end_time</span><span class="o">=</span><span class="n">steps</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">GameOfLife</span><span class="p">(</span><span class="n">gdf</span><span class="o">=</span><span class="n">grid</span><span class="p">)</span>
 
-if st.button(&quot;Executar Simulação&quot;):
-    plot_area = st.empty()
-    Map(gdf=grid, plot_area=plot_area, plot_params=plot_params)
-    env.run()
-</code></pre>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Executar Simulação&quot;</span><span class="p">):</span>
+    <span class="n">plot_area</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+    <span class="n">Map</span><span class="p">(</span><span class="n">gdf</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">plot_area</span><span class="o">=</span><span class="n">plot_area</span><span class="p">,</span> <span class="n">plot_params</span><span class="o">=</span><span class="n">plot_params</span><span class="p">)</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
 
 
 
