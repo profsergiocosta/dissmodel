@@ -1,0 +1,12 @@
+site_name: DisSModel
+site_url: https://profsergiocosta.github.io/dissmodel/
+repo_url: https://github.com/profsergiocosta/dissmodel
+repo_name: GitHub
+theme:
+  name: material
+  language: pt
+nav:
+  - Início: index.md
+  - Exemplos:
+      - Game of Life: examples/game_of_life.md
+      - Modelo de Queimada: examples/fire_model.md
