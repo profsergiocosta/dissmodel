@@ -16,6 +16,7 @@ nav:
   - Módulos:
     - Core: modules/core.md
     - Visualization: modules/visualization.md
+    - Geo: modules/geo.md
   - Exemplos:
       - Autômatos Celulares:
           - Introdução: examples/CA/index.md

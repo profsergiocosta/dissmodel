@@ -133,10 +133,6 @@ Cada modelo criado herda da classe base `Model`, que garante a integração com 
 
 ```python
 class SIR(Model):
-    susceptible: int
-    infected: int
-    recovered: int
-    duration: int
 
     def __init__(self, susceptible=9998, infected=2, recovered=0, duration=2,
                  contacts=6, probability=0.25, final_time=30):
@@ -165,3 +161,74 @@ class SIR(Model):
 ```
 
 A estrutura orientada a objetos facilita a extensão do modelo, a separação de responsabilidades e a reutilização de lógica entre diferentes simulações.
+
+🧪 Classe do Modelo: SIR
+
+Define o modelo SIR como uma subclasse de Model.
+
+```python
+class SIR(Model):
+```
+
+
+Esses são atributos do modelo:
+- susceptible: número de pessoas suscetíveis.
+- infected: número de pessoas infectadas.
+- recovered: número de pessoas recuperadas.
+- duration: tempo médio que uma pessoa permanece infectada.
+
+🔧 Construtor __init__
+
+Define valores padrão para o modelo e armazena os parâmetros:
+
+- contacts: número médio de contatos por infectado por unidade de tempo.
+- probability: probabilidade de contágio por contato.
+- final_time: tempo final da simulação.
+
+Os outros parâmetros (susceptible, etc.) são os estados iniciais do modelo.
+
+Note que super().__init__() é chamado para garantir que a lógica de tempo e ambiente do DisSModel seja inicializada corretamente.
+
+🔁 Método update
+```python
+def update(self):
+```    
+Este método atualiza os valores das variáveis do modelo a cada passo de tempo. A lógica segue as equações diferenciais clássicas do modelo SIR, adaptadas para forma discreta:
+
+Cálculos:
+População total:
+
+```python
+total = self.susceptible + self.infected + self.recovered
+Taxa de infecção:
+```
+```python
+alpha = self.contacts * self.probability
+Proporção de suscetíveis:
+```
+```python
+prop = self.susceptible / total
+Novos infectados:
+```
+```python
+new_infected = self.infected * alpha * prop
+Novos recuperados:
+```
+
+```python
+new_recovered = self.infected / self.duration
+```
+
+Atualização dos estados:
+```python
+self.susceptible -= new_infected
+self.infected += new_infected - new_recovered
+self.recovered += new_recovered
+```
+
+▶️ Método execute
+```python
+def execute(self):
+    self.update()
+```
+Esse método é chamado a cada passo de tempo do ambiente do DisSModel. Aqui, ele apenas chama self.update() — ou seja, aplica a lógica do modelo a cada instante.
