@@ -2,22 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://profsergiocosta.github.io/dissmodel/</loc>
-         <lastmod>2025-06-06</lastmod>
-    </url>
-    <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/core/</loc>
-         <lastmod>2025-06-06</lastmod>
+         <lastmod>2025-06-07</lastmod>
     </url>
     <url>
          <loc>https://profsergiocosta.github.io/dissmodel/examples/CA/</loc>
-         <lastmod>2025-06-06</lastmod>
+         <lastmod>2025-06-07</lastmod>
     </url>
     <url>
          <loc>https://profsergiocosta.github.io/dissmodel/examples/CA/fire_model/</loc>
-         <lastmod>2025-06-06</lastmod>
+         <lastmod>2025-06-07</lastmod>
     </url>
     <url>
          <loc>https://profsergiocosta.github.io/dissmodel/examples/CA/game_of_life/</loc>
-         <lastmod>2025-06-06</lastmod>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://profsergiocosta.github.io/dissmodel/modules/core/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://profsergiocosta.github.io/dissmodel/modules/geo/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://profsergiocosta.github.io/dissmodel/modules/visualization/</loc>
+         <lastmod>2025-06-07</lastmod>
     </url>
 </urlset>
