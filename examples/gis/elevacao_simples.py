@@ -25,7 +25,7 @@ class ElevacaoSimples(Model):
 
 
 # Carrega os dados espaciais
-file_name = "data/elevacao_pol.zip"
+file_name = "examples/data/elevacao_pol.zip"
 gdf = gpd.read_file(file_name)
 gdf.set_index("object_id0", inplace=True)
 

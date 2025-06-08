@@ -12,7 +12,7 @@ from dissmodel.visualization import Map
 
 import geopandas as gpd
 
-file_name = "data/ilha_do_maranhao.zip"
+file_name = "examples/data/ilha_do_maranhao.zip"
 gdf = gpd.read_file(filename=file_name)
 
 # Criação do ambiente de simulação, que integra espaço, tempo e agentes
