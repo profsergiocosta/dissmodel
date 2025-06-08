@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/examples/ca/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/examples/ca/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/examples/ca/fire_model/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/examples/ca/fire_model/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/examples/ca/game_of_life/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/examples/ca/game_of_life/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/examples/sysdyn/run_sir/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/examples/sysdyn/run_sir/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/modules/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/modules/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/modules/core/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/modules/core/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/modules/geo/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/modules/geo/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
     <url>
-         <loc>https://profsergiocosta.github.io/dissmodel/modules/visualization/</loc>
+         <loc>https://lambdageo.github.io/dissmodel/modules/visualization/</loc>
          <lastmod>2025-06-08</lastmod>
     </url>
 </urlset>
