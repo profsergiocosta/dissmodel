@@ -1,7 +1,7 @@
 # Modelo Game of Life
 # Exemplo de execução do Game of Life com autômato celular espacial
 
-import math
+
 import random
 
 from libpysal.weights import Queen
@@ -58,7 +58,6 @@ class GameOfLife(CellularAutomaton):
         Inicializa a vizinhança usando a estratégia Queen.
         """
         self.create_neighborhood(strategy=Queen, use_index=True)
-        #self.initialize() # deixar para o cliente definir se vai usar essa initializacao
 
     def rule(self, idx):
         """

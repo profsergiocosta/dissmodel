@@ -1,7 +1,21 @@
 site_name: DisSModel
 site_url: https://profsergiocosta.github.io/dissmodel/
 repo_url: https://github.com/profsergiocosta/dissmodel
-repo_name: GitHub
+repo_name: dissmodel
+
+
+
+plugins:
+    - mkdocs-jupyter:
+          include: ["*.ipynb"] # Default: ["*.py", "*.ipynb"]
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 theme:
   name: material
   language: pt
@@ -19,6 +33,8 @@ nav:
     - Geo: modules/geo.md
   - Exemplos:
       - Autômatos Celulares:
-          - Introdução: examples/CA/index.md
-          - Game of Life: examples/CA/game_of_life.md
-          - Modelo de Queimada: examples/CA/fire_model.md
+          - Introdução: examples/ca/index.md
+          - Game of Life: examples/ca/game_of_life.ipynb
+          - Modelo de Queimada: examples/ca/fire_model.md
+      - Systemas Dinâmicos:
+          - SIR: examples/sysdyn/run_sir.ipynb
