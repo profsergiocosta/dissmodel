@@ -1,4 +1,4 @@
-from dissmodel.models.ca.life import GameOfLife
-
-from dissmodel.models.ca.fire import FireModel
-from dissmodel.models.ca.fire_prob import FireModelProb
+from .game_of_life import GameOfLife
+from .fire_model import FireModel
+from .fire_model_prob import FireModelProb
+from .propagation import Propagation

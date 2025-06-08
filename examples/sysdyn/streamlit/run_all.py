@@ -1,12 +1,16 @@
 import streamlit as st
 import inspect
-import dissmodel.models.sysdyn as sysdyn_models
+
 from dissmodel.core import Environment
-from dissmodel.visualization.streamlit import StreamlitChart, display_inputs
+from dissmodel.visualization import Chart, display_inputs
 
 # Configurações iniciais da página
 st.set_page_config(page_title="Modelos SysDyn", layout="centered")
 st.title("Modelos do DisSModel (SysDyn)")
+
+
+
+import dissmodel.models.sysdyn as sysdyn_models  # Substitua pelo seu módulo real
 
 # Obter todas as classes definidas em dissmodel.models.sysdyn
 model_classes = {
@@ -36,7 +40,7 @@ st.sidebar.subheader("Parâmetros do Modelo")
 display_inputs(model_instance, st.sidebar)
 
 # Área para o gráfico
-StreamlitChart(plot_area=st.empty())
+Chart(plot_area=st.empty())
 
 # Executa simulação
 if executar:

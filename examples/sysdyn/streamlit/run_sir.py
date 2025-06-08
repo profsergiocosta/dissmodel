@@ -2,9 +2,11 @@ import streamlit as st
 
 from dissmodel.core import Environment
 from dissmodel.visualization import Chart
-from dissmodel.visualization.streamlit import StreamlitChart, display_inputs
+from dissmodel.visualization import  display_inputs
 
-from dissmodel.models.sysdyn import PopulationGrowth
+
+from dissmodel.models.sysdyn import SIR
+
 
 
 ############################
@@ -12,8 +14,8 @@ from dissmodel.models.sysdyn import PopulationGrowth
 ############################
 
 # Configurações iniciais da página
-st.set_page_config(page_title="Population Growth Model", layout="centered")
-st.title("Population Growth Model (DisSModel)")
+st.set_page_config(page_title="SIR Model", layout="centered")
+st.title("SIR Model (DisSModel)")
 
 # Painel lateral para os parâmetros do modelo
 st.sidebar.title("Parâmetros do Modelo")
@@ -31,16 +33,22 @@ env = Environment(end_time=steps, start_time=0)
 # Instanciação do modelo e configuração dos inputs
 ############################
 
-pop = PopulationGrowth()
+# Instancia o modelo com valores padrão
+sir = SIR(susceptible=9998, infected=2, recovered=0, duration=2, contacts=6,
+          probability=0.25, final_time=30)
 
 # Exibe os campos para entrada de dados do modelo
-display_inputs(pop, st.sidebar)
+display_inputs(sir, st.sidebar)
 
 ############################
 # Visualização do resultado
 ############################
 
-StreamlitChart(plot_area=st.empty())
 
+# Inicializa o componente de gráfico com uma area reservada para o gráfico
+Chart(plot_area=st.empty())
+
+# Executa a simulação ao clicar no botão
 if executar:
+    env.reset()
     env.run()
