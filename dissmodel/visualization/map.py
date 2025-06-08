@@ -13,7 +13,10 @@ def is_notebook():
 
 class Map(Model):
     def setup(self, gdf, plot_params, pause=True, plot_area=None):
-        self.fig, self.ax = plt.subplots(1, 1, figsize=(10, 6))
+        
+        if not is_notebook():
+            self.fig, self.ax = plt.subplots(1, 1, figsize=(10, 6))
+
         self.plot_params = plot_params
         self.pause = pause
         self.gdf = gdf
@@ -21,9 +24,12 @@ class Map(Model):
 
     def update(self, year, gdf):
 
-        if is_notebook():
+        
+
+        if is_notebook():        
             from IPython.display import clear_output
             clear_output(wait=True)  # Limpa a saída do notebook para exibir apenas o gráfico atualizado
+            self.fig, self.ax = plt.subplots(1, 1, figsize=(10, 6))
 
         self.ax.clear()
         self.gdf.plot(ax=self.ax, **self.plot_params)
@@ -37,12 +43,8 @@ class Map(Model):
         elif is_notebook():
             # Modo Jupyter Notebook
             from IPython.display import display
-            #from IPython.display import clear_output
-            #clear_output(wait=True)  # Limpa a saída do notebook para exibir apenas o gráfico atualizado
             display(self.fig)    
-            #plt.show()        
             plt.close(self.fig)
-            #plt.draw()  # Desenha o gráfico na tela
         elif self.pause:
             # Modo terminal interativo
             plt.pause(0.01)

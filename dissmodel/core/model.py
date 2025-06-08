@@ -5,7 +5,7 @@ import math
 class Model(sim.Component):
     def __init__(self, step=1, start_time=0, end_time=math.inf, name="", *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.name = name
+        #self.name = name
         self._step = step
         self._start_time = start_time
         self._end_time = end_time
