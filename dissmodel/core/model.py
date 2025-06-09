@@ -7,16 +7,16 @@ class Model(sim.Component):
         super().__init__(*args, **kwargs)
         #self.name = name
         self._step = step
-        self._start_time = start_time
-        self._end_time = end_time
+        self.start_time = start_time
+        self.end_time = end_time
 
     def process(self):
         # Espera até o tempo de início, se necessário
-        if self.env.now() < self._start_time:
-            self.hold(self._start_time - self.env.now())
+        if self.env.now() < self.start_time:
+            self.hold(self.start_time - self.env.now())
 
         # Executa até o tempo de término
-        while self.env.now() < self._end_time:
+        while self.env.now() < self.end_time:
             self.execute()
             self.hold(self._step)
 

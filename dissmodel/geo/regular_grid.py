@@ -6,6 +6,20 @@ from shapely.geometry import box
 import matplotlib.pyplot as plt
 import rasterio
 
+
+def parse_idx(idx: str) -> tuple[int, int]:
+    """
+    Extrai x e y a partir de um índice no formato 'y-x'.
+
+    Args:
+        idx (str): Índice no formato 'y-x', como '0-0', '3-4', etc.
+
+    Returns:
+        tuple[int, int]: (x, y) como inteiros
+    """
+    y_str, x_str = idx.split("-")
+    return int(x_str), int(y_str)
+
 def regular_grid(gdf=None, bounds=None, resolution=None, dimension=None, attrs={}, crs=None):
     """
     Cria um grid regular com células de tamanho fixo (homogêneo), baseado em:
