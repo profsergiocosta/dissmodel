@@ -9,8 +9,7 @@ class Snow(CellularAutomaton):
 
     probability: float
 
-    def setup(self,  probability=0.02):
-        
+    def setup(self,  probability=0.02):   
 
         self.probability = probability
     

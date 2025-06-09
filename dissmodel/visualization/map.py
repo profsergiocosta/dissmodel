@@ -31,7 +31,12 @@ class Map(Model):
             clear_output(wait=True)  # Limpa a saída do notebook para exibir apenas o gráfico atualizado
             self.fig, self.ax = plt.subplots(1, 1, figsize=(10, 6))
 
-        self.ax.clear()
+        
+
+        # evitar de ficar duplicando legenda
+        self.fig.clf()
+        self.ax = self.fig.add_subplot(1, 1, 1)
+        
         self.gdf.plot(ax=self.ax, **self.plot_params)
         self.ax.set_title(f'Mapa - Ano {year}')
         plt.tight_layout()

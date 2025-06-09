@@ -78,4 +78,4 @@ class CellularAutomaton(Model):
         #    raise RuntimeError("Você deve criar a vizinhança antes de executar o modelo. Use `.create_neighborhood()`.")
         
         self.gdf[self.state_attr] = self.gdf.index.map(self.rule)
-        print(self.env.now())
+        #print(self.env.now())
