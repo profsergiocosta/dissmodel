@@ -15,17 +15,18 @@ class CellularAutomaton(Model):
     - step, start_time, end_time, name: parâmetros herdados da classe Model.
     """
 
-    def __init__(self, gdf, state_attr="state", step=1, start_time=0, end_time=math.inf, name="", *args, **kwargs):
+    def __init__(self, gdf, state_attr="state", step=1, start_time=0, end_time=math.inf, name="", dim=None, *args, **kwargs):
         self.gdf = gdf
         self.state_attr = state_attr
         self._neighborhood_created = False
+        self.dim = dim
         super().__init__(step=step, start_time=start_time, end_time=end_time, name=name, *args, **kwargs)
 
-    def initialize():
+    def initialize(self):
         """
         Deve ser sobrescrito pelas subclasses.
         """
-        raise NotImplementedError("A subclasse deve implementar.")
+        pass
 
     def create_neighborhood(self, strategy=Queen, neighbors_dict=None, *args, **kwargs):
         """
@@ -73,8 +74,8 @@ class CellularAutomaton(Model):
         """
         Executa um passo do autômato aplicando a regra a cada célula.
         """
-        if not self._neighborhood_created:
-            raise RuntimeError("Você deve criar a vizinhança antes de executar o modelo. Use `.create_neighborhood()`.")
+        #if not self._neighborhood_created:
+        #    raise RuntimeError("Você deve criar a vizinhança antes de executar o modelo. Use `.create_neighborhood()`.")
         
         self.gdf[self.state_attr] = self.gdf.index.map(self.rule)
-        print(self.env.now())
+        #print(self.env.now())
