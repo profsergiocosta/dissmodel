@@ -1,0 +1,40 @@
+site_name: DisSModel
+site_url: https://lambdageo.github.io/dissmodel/
+repo_url: https://github.com/lambdageo/dissmodel
+repo_name: dissmodel
+
+
+
+plugins:
+    - mkdocs-jupyter:
+          include: ["*.ipynb"] # Default: ["*.py", "*.ipynb"]
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+theme:
+  name: material
+  language: pt
+
+markdown_extensions:
+  - codehilite
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+  - Início: index.md
+  - Módulos:
+    - Core: modules/core.md
+    - Visualization: modules/visualization.md
+    - Geo: modules/geo.md
+  - Exemplos:
+      - Autômatos Celulares:
+          - Introdução: examples/ca/index.md
+          - Game of Life: examples/ca/game_of_life.ipynb
+          - Modelo de Queimada: examples/ca/fire_model.md
+      - Systemas Dinâmicos:
+          - SIR: examples/sysdyn/run_sir.ipynb

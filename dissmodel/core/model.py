@@ -1,51 +1,25 @@
 import salabim as sim
-from pysal.lib import weights
 
-class Model (sim.Component):
+import math
 
-    strategies = {
-        "Queen" : weights.contiguity.Queen,
-        "Rook" : weights.contiguity.Rook
-    }
-
-    def __init__(self, hold = 1, name="", create_neighbohood = None, *args, **kwargs):
+class Model(sim.Component):
+    def __init__(self, step=1, start_time=0, end_time=math.inf, name="", *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.name = name
-        self.create_neighbohood = create_neighbohood
-        self._hold = hold
-        if self.create_neighbohood:
-            self.w_ = Model.strategies[self.create_neighbohood].from_dataframe(self.env.gdf, use_index=True)                   
+        #self.name = name
+        self._step = step
+        self.start_time = start_time
+        self.end_time = end_time
 
-    def neighs(self, idx):
-        """
-        Retorna os índices dos vizinhos da célula fornecida.
-        """
-        if self.create_neighbohood:
-            ns = self.w_.neighbors[idx]
-            #return ns
-            return self.env.gdf.loc[ns]
-        else:
-            return {}
-    
-    def neighs_idx(self, idx):
-        """
-        Retorna os índices dos vizinhos da célula fornecida.
-        """
-        if self.create_neighbohood:
-            ns = self.w_.neighbors[idx]
-            #return ns
-            return self.env.gdf.loc[ns]
-        else:
-            return {}
-    def update_neighbohood (self, strategy):
-        self.w_ = Model.strategies[strategy].from_dataframe(self.env.gdf, use_index=True)                            
-        
     def process(self):
-            while True: 
-                self.execute() 
-                self.hold(self._hold)
-    
-    
+        # Espera até o tempo de início, se necessário
+        if self.env.now() < self.start_time:
+            self.hold(self.start_time - self.env.now())
+
+        # Executa até o tempo de término
+        while self.env.now() < self.end_time:
+            self.execute()
+            self.hold(self._step)
+
 
     def __setattr__(self, name, value):
         
