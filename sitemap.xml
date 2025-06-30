@@ -2,38 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lambdageo.github.io/dissmodel/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/examples/ca/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/examples/ca/fire_model/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/examples/ca/game_of_life/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/examples/sysdyn/run_sir/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/modules/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/modules/core/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/modules/geo/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
     </url>
     <url>
          <loc>https://lambdageo.github.io/dissmodel/modules/visualization/</loc>
-         <lastmod>2025-06-08</lastmod>
+         <lastmod>2025-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://lambdageo.github.io/dissmodel/uml/core/</loc>
+         <lastmod>2025-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://lambdageo.github.io/dissmodel/uml/geo/</loc>
+         <lastmod>2025-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://lambdageo.github.io/dissmodel/uml/models_ca/</loc>
+         <lastmod>2025-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://lambdageo.github.io/dissmodel/uml/models_sysdyn/</loc>
+         <lastmod>2025-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://lambdageo.github.io/dissmodel/uml/overview/</loc>
+         <lastmod>2025-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://lambdageo.github.io/dissmodel/uml/visualization/</loc>
+         <lastmod>2025-06-30</lastmod>
     </url>
 </urlset>
