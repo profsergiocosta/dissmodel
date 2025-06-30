@@ -38,3 +38,11 @@ nav:
           - Modelo de Queimada: examples/ca/fire_model.md
       - Systemas Dinâmicos:
           - SIR: examples/sysdyn/run_sir.ipynb
+  - UML Diagrams:
+      - Overview: uml/overview.md
+      - Core: uml/core.md
+      - Geo: uml/geo.md
+      - Models:
+          - CA: uml/models_ca.md
+          - SysDyn: uml/models_sysdyn.md
+      - Visualization: uml/visualization.md
