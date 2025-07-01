@@ -99,9 +99,8 @@ class SIR(Model):
     recovered: int
     duration: int
 
-    def __init__(self, susceptible=9998, infected=2, recovered=0, duration=2,
+    def setup(self, susceptible=9998, infected=2, recovered=0, duration=2,
                  contacts=6, probability=0.25, final_time=30):
-        super().__init__()
         self.susceptible = susceptible
         self.infected = infected
         self.recovered = recovered
