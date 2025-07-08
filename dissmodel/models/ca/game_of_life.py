@@ -19,7 +19,18 @@ class GameOfLife(CellularAutomaton):
     A célula sobrevive, nasce ou morre conforme o número de vizinhos vivos.
     """
 
+
     def initialize (self):
+
+        fill(
+            strategy=FillStrategy.RANDOM_SAMPLE,
+            gdf=self.gdf,
+            attr="state",
+            data={1: 0.6, 0: 0.4},  # 70% de células com 1, 30% com 0
+            seed=42
+        )
+        
+    def initialize_ (self):
         # Padrões clássicos do Game of Life
         patterns = {
             "glider": [

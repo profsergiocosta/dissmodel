@@ -3,11 +3,11 @@ from dissmodel.geo import CellularAutomaton, parse_idx
 from libpysal.weights import lat2W  # Von Neumann neighborhood
 
 class Snow(CellularAutomaton):
-
     EMPTY = 0
     SNOW = 1
 
     probability: float
+
 
     def setup(self,  probability=0.02):   
 
@@ -20,11 +20,10 @@ class Snow(CellularAutomaton):
 
         # Célula no TOPO: início da queda
         if y == self.dim - 1:
-            if cell.state == self.EMPTY and t < self.end_time - self.dim and random.random() < self.probability:
+            if cell.state == self.EMPTY and t < (self.end_time - self.dim) and random.random() < self.probability:
                 return self.SNOW
             return self.EMPTY
 
-        
         # Célula abaixo (para verificar se a neve pode descer)
         below_idx = f"{y - 1}-{x}" if y - 1 >= 0 else None
         if cell.state == self.SNOW and y == 0:

@@ -29,41 +29,56 @@ def track_plot(label, color, plot_type="line"):
     return decorator
 
 class Chart(Model):
-    def setup(self, select=None, pause=True, plot_area=None):
+    def setup(
+        self,
+        select=None,
+        pause=True,
+        plot_area=None,
+        show_legend=True,       
+        show_grid=False,        
+        title="Histórico das Variáveis"  # Permite customizar o título
+    ):
         self.select = select
         self.interval = 1
-        self.time_points = []        
+        self.time_points = []
         self.pause = pause
         self.plot_area = plot_area
+        self.show_legend = show_legend
+        self.show_grid = show_grid
+        self.title = title
 
         if not is_notebook():
             self.fig, self.ax = plt.subplots()
             self.ax.set_xlabel("Tempo")
-            self.ax.set_title("Histórico das Variáveis")
+            self.ax.set_title(self.title)
 
     def execute(self):
-
-        if is_notebook():        
+        if is_notebook():
             from IPython.display import clear_output
-            clear_output(wait=True)  # Limpa a saída do notebook para exibir apenas o gráfico atualizado
+            clear_output(wait=True)
             self.fig, self.ax = plt.subplots()
             self.ax.set_xlabel("Tempo")
-            self.ax.set_title("Histórico das Variáveis")
+            self.ax.set_title(self.title)
 
         plt.sca(self.ax)
         self.time_points.append(self.env.now())
 
         plot_metadata = getattr(self.env, "_plot_metadata", {})
-        
+
         self.ax.clear()
         self.ax.set_xlabel("Tempo")
-        self.ax.set_title("Histórico das Variáveis")
+        self.ax.set_title(self.title)
 
         for label, info in plot_metadata.items():
             if self.select is None or label in self.select:
                 self.ax.plot(info["data"], label=label, color=info["color"])
 
-        if self.env.now() == 0:
+        # Mostrar grade se habilitado
+        if self.show_grid:
+            self.ax.grid(True)
+
+        # Mostrar legenda se habilitado
+        if self.show_legend:
             self.ax.legend()
 
         self.ax.relim()
@@ -75,14 +90,12 @@ class Chart(Model):
             # Modo Streamlit
             self.plot_area.pyplot(self.fig)
         elif is_notebook():
-            # Modo Jupyter Notebook
             buf = io.BytesIO()
             self.fig.savefig(buf, format='png')
             buf.seek(0)
             display(Image(data=buf.read()))
             plt.close(self.fig)
         elif self.pause:
-            # Modo CLI interativo
             plt.pause(0.1)
             if self.env.now() == self.env.end_time:
                 plt.show()

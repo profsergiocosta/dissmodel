@@ -5,14 +5,12 @@ from dissmodel.visualization import track_plot
 class Coffee(Model):
     temperature: float
     roomTemperature: float
-    finalTime: int
-
+    
     def __init__(self, temperature=80, roomTemperature=20, finalTime=20):
         super().__init__()
         self.temperature = temperature
         self.roomTemperature = roomTemperature
-        self.finalTime = finalTime
-
+    
     def execute(self):
         """Executa um passo de simulação."""
         difference = self.temperature - self.roomTemperature
