@@ -11,7 +11,7 @@ class PredatorPrey(Model):
     predDeath: float
     predGrowthKills: float
 
-    def __init__(
+    def setup (
         self,
         predator=40,
         prey=1000,
@@ -20,7 +20,7 @@ class PredatorPrey(Model):
         predDeath=0.02,
         predGrowthKills=0.00002
     ):
-        super().__init__()
+
         self.predator = predator
         self.prey = prey
         self.preyGrowth = preyGrowth

@@ -40,7 +40,7 @@ st.sidebar.subheader("Parâmetros do Modelo")
 display_inputs(model_instance, st.sidebar)
 
 # Área para o gráfico
-Chart(plot_area=st.empty())
+Chart(plot_area=st.empty(), show_grid=True)
 
 # Executa simulação
 if executar:

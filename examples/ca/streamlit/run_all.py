@@ -30,7 +30,7 @@ model_classes = {
 model_name = st.sidebar.selectbox("Escolha o modelo", list(model_classes.keys()))
 
 # Parâmetros gerais
-steps = st.sidebar.slider("Número de passos", min_value=1, max_value=200, value=50)
+steps = st.sidebar.slider("Número de passos", min_value=1, max_value=1000, value=50)
 grid_dim = st.sidebar.slider("Tamanho da grade", min_value=5, max_value=100, value=20)
 
 # Colormaps disponíveis (qualitativos e contínuos)

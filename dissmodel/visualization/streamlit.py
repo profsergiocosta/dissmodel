@@ -10,7 +10,7 @@ def display_inputs(obj, st):
         value = getattr(obj, name, None)
 
         if isinstance(value, int):
-            new_value = st.slider(name, 0, 100, value)
+            new_value = st.slider(name, 0, 1000, value)
         elif isinstance(value, float):
             new_value = st.slider(name, 0.0, 1.0, value, step=0.01)
         elif isinstance(value, bool):

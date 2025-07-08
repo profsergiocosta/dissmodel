@@ -1,14 +1,12 @@
 # Modelo FireModel baseado em dissmodel.CellularAutomaton
 
-from dissmodel.geo import CellularAutomaton
+
 from libpysal.weights import Rook
-
-
-from dissmodel.geo import regular_grid, fill, FillStrategy
+from dissmodel.geo import CellularAutomaton, regular_grid, fill, FillStrategy
 
 
 class FireModel(CellularAutomaton):
-    # Estados possíveis
+ 
     FOREST = 0
     BURNING = 1
     BURNED = 2
@@ -27,7 +25,7 @@ class FireModel(CellularAutomaton):
         Cria a vizinhança com a estratégia Rook.
         """
         self.create_neighborhood(strategy=Rook, use_index=True)
-        self.initialize()
+    
 
     def rule(self, idx):
         """
